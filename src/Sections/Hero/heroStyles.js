@@ -8,7 +8,8 @@ export const heroContainer = {
   width: "100vw",
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
+  justifyContent: "center", // Centra verticalmente
+  alignItems: "flex-start", // Alinea los contenidos a la izquierda
   gap: 3,
   marginBottom: { xs: 6, md: 10 },
 };
@@ -19,20 +20,24 @@ export const contentBox = {
   justifyContent: "center", // Centra verticalmente
   alignItems: "flex-start", // Alinea los textos a la izquierda
   height: "100%", // Toma todo el alto del viewport
-  maxWidth: "1200px", // Limita el ancho máximo del contenido
+  width: "100%", // Asegura que ocupe todo el ancho disponible
   px: { xs: 2, sm: 4, md: 6, lg: 8 }, // Padding horizontal responsivo
-  mx: "auto",
+  ml: { xs: 2, sm: 4, md: 6, lg: 8 }, // Margen izquierdo responsivo
 };
 
 export const buttonsBox = {
   display: "flex",
   gap: 5,
+  marginTop: { xs: 2, sm: 3, md: 4 }, // Espacio entre el párrafo y los botones
+  
 };
 
 export const primaryButton = {
   borderRadius: 5,
   border: "0.5px solid white",
   backgroundColor: "transparent",
+  px: 6.5,
+  py: 1,
   color: "white",
   "&:hover": { opacity: 0.8 },
 };
@@ -41,8 +46,20 @@ export const secondaryButton = {
   border: "0.5px solid green",
   borderRadius: 5,
   backgroundColor: "transparent",
+  px: 6.5,
+  py:1,
   color: "green",
   "&:hover": {
     opacity: 0.8,
   },
 };
+
+
+export const title = {
+  fontSize: { xs: "2.5rem", sm: "3rem", md: "2rem" },
+  color: "white",
+  fontWeight: 700,
+  textAlign: "left",
+  lineHeight: { xs: 1.2, sm: 1.3, md: 1.4 },
+ // marginBottom: { xs: 1, sm: 1.5, md: 2 }, // Espacio entre el título y el párrafo
+}
