@@ -2,9 +2,9 @@ import React from "react";
 import { Box, Button,Typography } from "@mui/material";
 import * as styles from "./heroStyles"; // Importa los estilos
 
-const Hero = () => {
+const Hero = ({ id }) => {
   return (
-    <Box sx={styles.heroContainer}>
+    <Box id={id} sx={styles.heroContainer}>
       <Box sx={styles.contentBox}>
         <Typography sx={styles.title}>
           <h1>

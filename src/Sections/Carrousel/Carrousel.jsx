@@ -7,7 +7,7 @@ import * as styles from "./carrouselStyles"; // Importa todos los estilos
 
 let images = [cardImage, cardImage, cardImage];
 
-const Carrousel = () => {
+const Carrousel = ({ id }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToNext = () => {
@@ -21,7 +21,7 @@ const Carrousel = () => {
 
   return (
     <>
-      <Box sx={styles.carrouselContainer}>
+      <Box id={id} sx={styles.carrouselContainer}>
         <Box sx={styles.imageContainer}>
           <Box
             sx={{
@@ -47,7 +47,17 @@ const Carrousel = () => {
           </IconButton>
         </Box>
 
-        <Box sx={{ flex: 1 ,minWidth: 0, ml: { md: 6, lg:15  },display:'flex',flexDirection:'column' ,gap:{xs:2,md:5,lg:5}, justifyItems:'center' }}>
+        <Box
+          sx={{
+            flex: 1,
+            minWidth: 0,
+            ml: { md: 6, lg: 15 },
+            display: "flex",
+            flexDirection: "column",
+            gap: { xs: 2, md: 5, lg: 5 },
+            justifyItems: "center",
+          }}
+        >
           <Typography variant="h6" component="div" sx={styles.titleStyle}>
             Viaja por el corazon de Mayorca
           </Typography>

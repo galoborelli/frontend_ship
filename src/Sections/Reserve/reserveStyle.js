@@ -2,8 +2,10 @@ export const reserveContainer = {
   display: "flex",
   flexDirection: { xs: "column", sm: "row" },
   alignItems: "flex-start",
+  width: "85%",
   gap: "2rem",
   padding: "2rem",
+  backgroundgcolor: "#white",
 };
 
 export const formBox = {
@@ -24,36 +26,22 @@ export const subTitleStyle = {
 
 export const formGrid = {
   display: "grid",
-  gap: "1rem",
+  rowGap: { xs: "1rem", sm: "1rem" }, // espacio entre filas
+  columnGap: { xs: "0rem", sm: "1rem" }, // espacio entre columnas
   marginTop: "2rem",
   gridTemplateColumns: {
     xs: "1fr",
     sm: "1fr 1fr",
   },
-  gridTemplateRows: "auto auto auto",
 };
 
-export const datePickerContainer = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "flex-start",
-};
-
-export const datePickerStyle = {
-  transform: "scale(0.85)",
-  transformOrigin: "top left",
-  maxHeight: "360px",
-  overflow: "hidden",
-  borderRadius: 4,
-  boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
-};
 
 export const rightBox = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   mt: { xs: 4, sm: 0 },
-  ml: { sm: 4 },
+ // ml: { sm: 4 },
 };
 
 export const cardStyle = {
@@ -97,5 +85,10 @@ export const termsLabel = {
 
 export const textFieldStyle = {
   width: "100%",
-  maxWidth: "400px",
-}
+  maxWidth: "500px",
+
+  "& .MuiOutlinedInput-root": {
+    border: "1px solid black",
+    borderRadius: "8px",
+  },
+};

@@ -25,9 +25,9 @@ const steps = [
   },
 ];
 
-const HowItWorks = () => {
+const HowItWorks = ({ id }) => {
   return (
-    <Container maxWidth="100%" sx={styles.container}>
+    <Container id={id} maxWidth="100%" sx={styles.container}>
       <Typography variant="h1" component="h2" sx={styles.title}>
         ¿How it works?
       </Typography>

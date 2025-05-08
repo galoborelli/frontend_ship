@@ -4,9 +4,9 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import styles from "./styleFooter";
 
-const Footer = () => {
+const Footer = ({ id }) => {
   return (
-    <Box sx={styles.footerContainer}>
+    <Box id={id} sx={styles.footerContainer}>
       <Container maxWidth="xl" sx={{ px: { xs: 2, md: 6 } }}>
         <Typography variant="h6" sx={styles.title}>
           Contact us
