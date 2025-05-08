@@ -1,21 +1,20 @@
 
-
 export const cardContainer = {
   display: "flex",
-  justifyContent: "space-between", // 👈 clave para distribuir el contenido verticalmente
-  alignItems: "center", // opcional, para centrar horizontalmente
-  width: { xs: "100%", sm: "auto", md: "30%" },
+  flexDirection: "column", // ✅ mejor estructura para móvil
+  alignItems: "center",
+  width: { xs: "100%", sm: "48%", md: "30%" }, // ✅ se adapta mejor en pantallas medianas
   borderRadius: 2,
   boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
   position: "relative",
   overflow: "hidden",
-  maxHeight: 450, // Ajusta este valor según tu diseño
-  margin: 1, // Añadimos un margen alrededor de cada card
+ 
 };
+
 
 export const numberStyle = {
   position: "absolute",
-  top: "20%", // Centra verticalmente el punto de referencia del elemento
+  top: {xs:'10%',lg:"20%"}, // Centra verticalmente el punto de referencia del elemento
   left: "50%", // Centra horizontalmente el punto de referencia del elemento
   zIndex: 1,
   color: "black",
@@ -29,17 +28,19 @@ export const numberStyle = {
 
 export const imageStyle = {
   width: "100%",
-  height: "100%", // Ajusta la altura según necesites
-  objectFit: "cover",
-  borderRadius: 1, // Para que la imagen también tenga los bordes redondeados
-  opacity: 0.5, // 👈 Ajusta la transparencia (0 = transparente, 1 = opaco)
+  height: "auto", // ✅ importante: que se adapte
+  maxHeight: {xs:300,sm:300,lg:500}, // ✅ limitar el alto máximo si querés
+  objectFit: "cover", // o "cover" si preferís recortar
+  borderRadius: 1,
+  opacity: 0.5,
 };
+
 
 export const textContainer = {
   position: "absolute",
   display: "flex",
   flexDirection: "column",
-  bottom: 130,
+  bottom: {xs:5,lg:130},
   width: "100%",
   color: "black",
   padding: 2,

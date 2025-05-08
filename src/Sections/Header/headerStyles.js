@@ -2,6 +2,7 @@
 export const appBar = {
   position: "fixed",
   display: "flex",
+  width: "100%",
   justifyContent: "space-between",
   alignItems: "center",
   backgroundColor: "transparent",
@@ -10,17 +11,25 @@ export const appBar = {
 
 export const toolbar = {
   display: "flex",
-  justifyContent: "space-between",
+  width: "90%",
+  justifyContent: "space-around",
   color: "white",
 };
 
 export const navBox = {
   display: "flex",
-  gap: 3,
+  flexWrap: "nowrap", // ✅ Evita saltos de línea
+  width: "100%",
+  justifyContent: { xs: "flex-start", sm: "space-around" }, // ✅ En mobile, alinea a la izquierda
+  gap: { xs: 1, sm: 3 }, // ✅ Espacio entre botones
 };
+
 
 export const navButton = {
   fontWeight: "bold",
+  fontSize: { xs: "0.65rem", sm: "0.85rem", md: "1rem" }, // ✅ Tamaño de fuente adaptable
+  px: { xs: 1, sm: 2, md: 3 }, // ✅ Padding horizontal reducido en mobile
+  whiteSpace: "nowrap", // ✅ Evita que el texto se divida
   color: "rgba(172, 164, 164, 0.8)",
   position: "relative",
   overflow: "hidden",
@@ -39,3 +48,4 @@ export const navButton = {
     width: "100%",
   },
 };
+

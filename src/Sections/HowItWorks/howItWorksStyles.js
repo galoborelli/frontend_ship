@@ -21,12 +21,10 @@ export const title = {
 
 export const stepsBox = {
   display: "flex",
-  alignSelf: "center",
-  width: "100%",
-  height: "100%",
-  justifyContent: "space-between", // Distribuye las tarjetas con espacio entre ellas
-  gap: 2,
-  flexWrap: "wrap", // Permite envolver en pantallas pequeñas
+  flexWrap: "wrap",
+  justifyContent: "center", // centrado en mobile
+  gap: 4, // un poco más de espacio entre cards
+  rowGap: 6, // espacio vertical mayor si se apilan
 };
 
 export const containerImage1 = {

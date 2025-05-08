@@ -34,7 +34,15 @@ const HowItWorks = () => {
       <Box sx={styles.stepsBox}>
         {steps.map((step) => (
           // Mirar cuando haga actualizacion a dinamico
-          <StepCard key={step.number} {...step} /> // Tener cuidado con el uso de {...step} ya que puede causar problemas si hay mas propiedades  o menos.
+          <StepCard
+            key={step.number}
+            {...step}
+            sx={{
+              width: { xs: "100%", sm: "48%", md: "30%" }, // Responsive width
+              minWidth: "250px",
+              maxWidth: "100%",
+            }}
+          />
         ))}
       </Box>
       <Box sx={styles.containerImage1}>
