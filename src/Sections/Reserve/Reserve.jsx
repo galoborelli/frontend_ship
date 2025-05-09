@@ -10,7 +10,7 @@ import {
   Card,
   CardMedia,
 } from "@mui/material";
-import { DatePicker } from "@mui/x-date-pickers";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import * as styles from "./reserveStyle";
@@ -50,7 +50,7 @@ const Reserve = ({ id }) => {
   return (
     <Box id={id} sx={styles.reserveContainer}>
       <Box sx={styles.formBox}>
-        <Typography sx={styles.titleBox}>Reservá tu experiencia</Typography>
+        <Typography sx={styles.titleBox}>Reservá tu experiencia.</Typography>
         <Typography sx={styles.subTitleStyle}>
           Completá el formulario y te responderemos lo antes posible. <br />
           También puedes escribirnos directamente por WhatsApp.
@@ -87,11 +87,15 @@ const Reserve = ({ id }) => {
               <Box>
                 <Typography sx={styles.label}>Fecha de reserva</Typography>
                 <DatePicker
-                  sx={styles.textFieldStyle}
                   value={formData.dateSelected}
                   onChange={(newDate) =>
                     setFormData({ ...formData, dateSelected: newDate })
                   }
+                  slotProps={{
+                    textField: {
+                      sx: styles.textFieldStyle, // ✅ Aquí aplicás tu estilo personalizado
+                    },
+                  }}
                 />
               </Box>
 

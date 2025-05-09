@@ -49,11 +49,12 @@ export const rightBox = {
 
 export const cardStyle = {
   position: "relative",
+  
   width: "300px" ,
   height: " 500px" ,
   overflow:"hidden" ,
   borderRadius: 4 ,
-  transform: "rotate(10deg)",
+  transform: {lg:"rotate(12deg) translateY(-50%)", xs:"rotate(12deg) translateY(0%)"},
   marginBottom: "2rem",
 };
 
@@ -63,6 +64,7 @@ export const cardImageStyle = {
   left: "0",
   width: "100%",
   height: "100%",
+  
   objectFit: "cover",
 
 };
@@ -91,8 +93,13 @@ export const textFieldStyle = {
   maxWidth: "500px",
 
   "& .MuiOutlinedInput-root": {
-    border: "1px solid black",
-    borderRadius: "8px",
+    border: "1px solid black !important",
+    borderRadius: "12px !important",
+
+    "& .Mui-focused .MuiOutlinedInpuºt-notchedOutline": {
+        borderColor: 'black', // 👈 esto quita el azul
+        boxShadow: 'none',
+    },
   },
 };
 

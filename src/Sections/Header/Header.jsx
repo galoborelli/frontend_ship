@@ -1,7 +1,7 @@
 import { AppBar, Toolbar, Box, Button } from "@mui/material";
 import { Link } from "react-router-dom"; // Importa Link desde react-router-dom
 import { HashLink } from "react-router-hash-link";
-
+import WhatsAppButton from "../../Components/WhatsappButton";
 import * as styles from "./headerStyles"; // Importa los estilos
 
 const titles = [
@@ -14,23 +14,26 @@ const titles = [
 
 const Header = () => {
   return (
-    <AppBar sx={styles.appBar}>
-      <Toolbar sx={styles.toolbar}>
-        <Box sx={styles.navBox}>
-          {titles.map(({ label, id }) => (
-            <Button
-              key={label}
-              component={HashLink}
-              smooth
-              to={`/#${id}`}
-              sx={styles.navButton}
-            >
-              {label}
-            </Button>
-          ))}
-        </Box>
-      </Toolbar>
-    </AppBar>
+    <>
+      <AppBar sx={styles.appBar}>
+        <Toolbar sx={styles.toolbar}>
+          <Box sx={styles.navBox}>
+            {titles.map(({ label, id }) => (
+              <Button
+                key={label}
+                component={HashLink}
+                smooth
+                to={`/#${id}`}
+                sx={styles.navButton}
+              >
+                {label}
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <WhatsAppButton />
+    </>
   );
 };
 

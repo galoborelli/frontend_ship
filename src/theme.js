@@ -2,7 +2,19 @@ import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   typography: {
-    fontFamily: "Inter, sans-serif", // Especifica Inter como la fuente principal
+    fontFamily: "Inter", // Especifica Inter como la fuente principal
+  },
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "transparent",
+            boxShadow: "none",
+          },
+        },
+      },
+    },
   },
 });
 

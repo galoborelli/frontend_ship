@@ -47,7 +47,7 @@ export const imageStyle = {
   width: "100%",
   height: "100%",
   display: "block",
-  objectFit: "contain", // ✅ Muestra toda la imagen sin recortes
+  objectFit: "cover", // ✅ Muestra toda la imagen sin recortes
   objectPosition: "center", // Centra la imagen en el contenedor
   flexShrink: 0,
 };
