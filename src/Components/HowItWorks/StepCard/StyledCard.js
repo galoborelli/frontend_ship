@@ -1,49 +1,47 @@
-
 export const cardContainer = {
   display: "flex",
-  flexDirection: "column", // ✅ mejor estructura para móvil
+  flexDirection: "column",
   alignItems: "center",
-  width: { xs: "100%", sm: "48%", md: "30%" }, // ✅ se adapta mejor en pantallas medianas
+  width: { xs: "90%", sm: "48%", md: "30%" }, // ✅ mejor en mobile
+  mx: "auto", // ✅ centra en mobile
   borderRadius: 2,
   boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
   position: "relative",
   overflow: "hidden",
- 
+  my: 2, // Margen vertical para separación entre cards
 };
-
 
 export const numberStyle = {
   position: "absolute",
-  top: {xs:'10%',lg:"20%"}, // Centra verticalmente el punto de referencia del elemento
-  left: "50%", // Centra horizontalmente el punto de referencia del elemento
+  top: { xs: "8%", lg: "15%" },
+  left: "50%",
+  transform: "translateX(-50%)", // ✅ centra horizontalmente con precisión
   zIndex: 1,
   color: "black",
   fontWeight: "bold",
-  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)", // Sombra del texto
-  fontSize: "6rem",
-  padding: "2px 8px",
-  borderRadius: 1,
+  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+  fontSize: { xs: "3rem", sm: "4rem", lg: "6rem" }, // ✅ más chico en mobile
 };
-
 
 export const imageStyle = {
   width: "100%",
-  height: "auto", // ✅ importante: que se adapte
-  maxHeight: {xs:300,sm:300,lg:500}, // ✅ limitar el alto máximo si querés
-  objectFit: "cover", // o "cover" si preferís recortar
+  height: "auto",
+  aspectRatio: "16/9", // ✅ mantiene proporción visual
+  maxHeight: { xs: 220, sm: 300, lg: 500 },
+  objectFit: "cover",
   borderRadius: 1,
   opacity: 0.5,
 };
 
-
 export const textContainer = {
   position: "absolute",
-  display: "flex",
-  flexDirection: "column",
-  bottom: {xs:5,lg:130},
+  bottom: { xs: 16, sm: 24, lg: 130 },
   width: "100%",
   color: "black",
-  padding: 2,
-  marginTop: 2,
+  px: 2,
   textAlign: "center",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
 };

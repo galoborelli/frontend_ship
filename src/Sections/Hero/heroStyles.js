@@ -7,12 +7,13 @@ export const heroContainer = {
   height: "80vh",
   width: "100vw",
   display: "flex",
-  flexWarp: "wrap",
+  flexWrap: "wrap", // Corregido el error tipográfico
   flexDirection: "column",
   justifyContent: "center", // Centra verticalmente
   alignItems: "flex-start", // Alinea los contenidos a la izquierda
   gap: 3,
   marginBottom: { xs: 6, md: 10 },
+  overflow: "hidden", // Evita el desbordamiento de contenido en pantallas pequeñas
 };
 
 export const contentBox = {
@@ -27,7 +28,6 @@ export const contentBox = {
 };
 
 export const buttonsBox = {
-
   display: "flex",
   flexWrap: "wrap", // ✅ permite que los botones salten abajo si no entran
   gap: 2,
@@ -63,12 +63,11 @@ export const secondaryButton = {
   },
 };
 
-
 export const title = {
   fontSize: { xs: "0.5rem", sm: "3rem", md: "2rem" },
   color: "white",
   fontWeight: 700,
   textAlign: "left",
   lineHeight: { xs: 1.2, sm: 1.3, md: 1.4 },
- // marginBottom: { xs: 1, sm: 1.5, md: 2 }, // Espacio entre el título y el párrafo
-}
+  // marginBottom: { xs: 1, sm: 1.5, md: 2 }, // Espacio entre el título y el párrafo
+};

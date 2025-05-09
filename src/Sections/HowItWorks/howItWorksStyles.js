@@ -1,12 +1,14 @@
-// howItWorksStyles.js
 export const container = {
   mt: 4,
   mb: 1,
+  px: 2, // ✅ Padding lateral seguro para evitar desbordes
   paddingTop: 10,
   borderRadius: 2,
   width: "100%",
   maxHeight: "40%",
   position: "relative",
+  boxSizing: "border-box", // ✅ Garantiza que el padding no cause desborde
+  left:'0%'
 };
 
 export const title = {
@@ -16,20 +18,21 @@ export const title = {
   display: "flex",
   justifyContent: "center",
   color: "black",
-  
 };
 
 export const stepsBox = {
   display: "flex",
   flexWrap: "wrap",
-  justifyContent: "center", // centrado en mobile
-  gap: 4, // un poco más de espacio entre cards
-  rowGap: 6, // espacio vertical mayor si se apilan
+  justifyContent: "center",
+  //gap: 4,
+  rowGap: 6,
+  width: "100%",
+  boxSizing: "border-box", // ✅ importante para evitar desborde en combinación con gap
 };
 
 export const containerImage1 = {
   display: "flex",
-  justifyContent: "flex-start", // Alinea los hijos al inicio
+  justifyContent: "flex-start",
   alignItems: "center",
   marginTop: 4,
   marginBottom: 4,
@@ -37,10 +40,9 @@ export const containerImage1 = {
 };
 
 export const imageStyle = {
-  width: "auto",
+  width: "100%", // ✅ Que no sobrepase el contenedor
+  maxWidth: { xs: "200px", sm: "300px", md: "500px" }, // ✅ Escala según breakpoint
   height: "auto",
-  maxWidth: "500px",
-  maxHeight: "500px",
-  marginLeft: "60%", // Desplaza la imagen hacia el 60% del ancho del contenedor
-  transform: "translateX(-50%)", // La centra sobre ese punto
+  marginLeft: { xs: "30%", sm: "30%", md: "60%" }, // ✅ En xs no hay desplazamiento
+  transform: { xs: "none", sm: "translateX(-50%)" }, // ✅ Solo se aplica desplazamiento en pantallas más grandes
 };

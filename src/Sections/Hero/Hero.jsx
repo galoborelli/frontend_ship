@@ -2,6 +2,9 @@ import React from "react";
 import { Box, Button,Typography } from "@mui/material";
 import * as styles from "./heroStyles"; // Importa los estilos
 
+
+
+
 const Hero = ({ id }) => {
   return (
     <Box id={id} sx={styles.heroContainer}>
@@ -18,6 +21,7 @@ const Hero = ({ id }) => {
           <Button sx={styles.secondaryButton}>Whatsapp</Button>
         </Box>
       </Box>
+
     </Box>
   );
 };

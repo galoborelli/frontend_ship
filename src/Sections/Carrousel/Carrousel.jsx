@@ -52,6 +52,7 @@ const Carrousel = ({ id }) => {
             flex: 1,
             minWidth: 0,
             ml: { md: 6, lg: 15 },
+            marginTop: { xs: 15, md: 0 },
             display: "flex",
             flexDirection: "column",
             gap: { xs: 2, md: 5, lg: 5 },

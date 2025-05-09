@@ -1,11 +1,13 @@
+
 export const reserveContainer = {
   display: "flex",
   flexDirection: { xs: "column", sm: "row" },
   alignItems: "flex-start",
-  width: "85%",
+  width: "70%",
   gap: "2rem",
   padding: "2rem",
-  backgroundgcolor: "#white",
+  margin: "0 auto",
+  marginTop: {xs:14,lg:20},
 };
 
 export const formBox = {
@@ -15,19 +17,19 @@ export const formBox = {
 export const titleBox = {
   fontWeight: "bold",
   color: "#333",
-  fontSize: "1.8rem",
+  fontSize: {xs: "1.5rem", sm: "2rem",lg: "4.5rem"},
 };
 
 export const subTitleStyle = {
   marginTop: "0.5rem",
-  fontSize: "1rem",
+  fontSize: {xs:"1rem",lg:"1.5rem"},
   color: "#555",
 };
 
 export const formGrid = {
   display: "grid",
-  rowGap: { xs: "1rem", sm: "1rem" }, // espacio entre filas
-  columnGap: { xs: "0rem", sm: "1rem" }, // espacio entre columnas
+  rowGap: "2rem", // espacio entre pares de inputs
+  columnGap: "2rem", // espacio entre columnas
   marginTop: "2rem",
   gridTemplateColumns: {
     xs: "1fr",
@@ -36,12 +38,13 @@ export const formGrid = {
 };
 
 
+
 export const rightBox = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  mt: { xs: 4, sm: 0 },
- // ml: { sm: 4 },
+  mt: { xs: 15, sm: 0 },
+ 
 };
 
 export const cardStyle = {
@@ -92,3 +95,9 @@ export const textFieldStyle = {
     borderRadius: "8px",
   },
 };
+
+
+export const label = {
+  color: "black",
+  
+}

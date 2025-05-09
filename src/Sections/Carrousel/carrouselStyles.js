@@ -5,7 +5,7 @@ export const carrouselContainer = {
   display: "flex",
   width: "75%",
   height: "40%",
-  gap: { xs: 4, md: 5 },
+  gap: { md: 5 },
   justifyContent: "center",
   alignItems: "flex-start",
   flexDirection: { xs: "column", md: "row", lg: "row" },

@@ -1,8 +1,8 @@
 import StepCard from "@Components/HowItWorks/StepCard/StepCard";
-import { Box, Typography, Container, Card, CardMedia } from "@mui/material";
-import  cardImage  from "@assets/hero-image.png";
-import arrowImage2 from '@assets/flecha-01.png'
-import * as styles from "./howItWorksStyles"; // Importa los estilos
+import { Box, Typography, CardMedia } from "@mui/material";
+import cardImage from "@assets/hero-image.png";
+import arrowImage2 from "@assets/flecha-01.png";
+import * as styles from "./howItWorksStyles"; // Estilos actualizados
 
 const steps = [
   {
@@ -27,33 +27,24 @@ const steps = [
 
 const HowItWorks = ({ id }) => {
   return (
-    <Container id={id} maxWidth="100%" sx={styles.container}>
+    <Box id={id} sx={styles.container}>
       <Typography variant="h1" component="h2" sx={styles.title}>
         ¿How it works?
       </Typography>
       <Box sx={styles.stepsBox}>
         {steps.map((step) => (
-          // Mirar cuando haga actualizacion a dinamico
-          <StepCard
-            key={step.number}
-            {...step}
-            sx={{
-              width: { xs: "100%", sm: "48%", md: "30%" }, // Responsive width
-              minWidth: "250px",
-              maxWidth: "100%",
-            }}
-          />
+          <StepCard key={step.number} {...step} />
         ))}
       </Box>
       <Box sx={styles.containerImage1}>
         <CardMedia
           sx={styles.imageStyle}
-          component="img" // Especifica que renderizará un elemento <img>
-          image={arrowImage2} // Pasa la ruta de la imagen a la prop 'image'
-          alt="Flecha" // Texto alternativo para la imagen
+          component="img"
+          image={arrowImage2}
+          alt="Flecha"
         />
       </Box>
-    </Container>
+    </Box>
   );
 };
 
