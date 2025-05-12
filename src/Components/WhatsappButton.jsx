@@ -6,8 +6,8 @@ const WhatsAppButton = () => {
     <Box
       sx={{
         position: "fixed",
-        bottom: 16,
-        right: {lg:'16px', xs:'8px'},
+        right: { lg: '10%', xs: '20px' },
+        bottom: "20px",
         zIndex: 1000,
       }}
     >
@@ -21,6 +21,7 @@ const WhatsAppButton = () => {
           width: 56,
           height: 56,
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
+          
         }}
         href="https://wa.me/549XXXXXXXXXX" // reemplazá con tu número
         target="_blank"

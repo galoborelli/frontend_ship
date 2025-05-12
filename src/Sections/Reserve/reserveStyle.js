@@ -27,14 +27,16 @@ export const subTitleStyle = {
 };
 
 export const formGrid = {
-  display: "grid",
+  display: 'grid',
+  gap: '16px', 
   rowGap: "2rem", // espacio entre pares de inputs
   columnGap: "2rem", // espacio entre columnas
   marginTop: "2rem",
   gridTemplateColumns: {
     xs: "1fr",
-    sm: "1fr 1fr",
-  },
+    md: "1fr 1fr",
+  }
+  
 };
 
 
@@ -54,7 +56,7 @@ export const cardStyle = {
   height: " 500px" ,
   overflow:"hidden" ,
   borderRadius: 4 ,
-  transform: {lg:"rotate(12deg) translateY(-50%)", xs:"rotate(12deg) translateY(0%)"},
+  transform: {lg:"rotate(12deg) translateY(-50%) ", xs:"rotate(10deg) translateY(0%)"},
   marginBottom: "2rem",
 };
 
@@ -91,11 +93,9 @@ export const termsLabel = {
 export const textFieldStyle = {
   width: "100%",
   maxWidth: "500px",
-
   "& .MuiOutlinedInput-root": {
     border: "1px solid black !important",
     borderRadius: "12px !important",
-
     "& .Mui-focused .MuiOutlinedInpuºt-notchedOutline": {
         borderColor: 'black', // 👈 esto quita el azul
         boxShadow: 'none',

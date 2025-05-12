@@ -9,6 +9,8 @@ import {
   Button,
   Card,
   CardMedia,
+  MenuItem,
+  Select,
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -20,6 +22,7 @@ const Reserve = ({ id }) => {
     name: "",
     contact: "",
     dateSelected: null,
+    timeSelected: "",
     coment: "",
     quantity: "",
     terms: false,
@@ -72,13 +75,12 @@ const Reserve = ({ id }) => {
               </Box>
 
               <Box>
-                <Typography sx={styles.label}>Cantidad de personas</Typography>
+                <Typography sx={styles.label}>Email o WhatsApp</Typography>
                 <TextField
                   sx={styles.textFieldStyle}
-                  name="quantity"
-                  type="number"
-                  placeholder="min. 2 max. 8"
-                  value={formData.quantity}
+                  name="contact"
+                  placeholder="e.g. +54 9 221 4567890"
+                  value={formData.contact}
                   onChange={handleChangeForm}
                   required
                 />
@@ -93,37 +95,53 @@ const Reserve = ({ id }) => {
                   }
                   slotProps={{
                     textField: {
-                      sx: styles.textFieldStyle, // ✅ Aquí aplicás tu estilo personalizado
+                      sx: styles.textFieldStyle,
                     },
                   }}
                 />
               </Box>
 
-              <Box>
-                <Typography sx={styles.label}>Email o WhatsApp</Typography>
-                <TextField
-                  sx={styles.textFieldStyle}
-                  name="contact"
-                  placeholder="e.g. +54 9 221 4567890"
-                  value={formData.contact}
-                  onChange={handleChangeForm}
-                  required
-                />
-              </Box>
-
-              <Box sx={{ gridColumn: "1 / -1" }}>
-                {" "}
-                {/* Este ocupa ambas columnas */}
+              <Box sx={{ gridRow: {lg:"3"}, gridColumn: {lg:"2"} }}>
                 <Typography sx={styles.label}>Comentarios</Typography>
                 <TextField
                   sx={styles.textFieldStyle}
                   name="coment"
                   multiline
                   minRows={4}
-                  placeholder="e.g. Nos encontramos en..."
+                  placeholder="e.g. Alguna petición especial..."
                   value={formData.coment}
                   onChange={handleChangeForm}
                 />
+              </Box>
+              <Box>
+                <Typography sx={styles.label}>Cantidad de personas</Typography>
+                <TextField
+                  sx={styles.textFieldStyle}
+                  name="quantity"
+                  type="number"
+                  placeholder="min. 2 max. 8"
+                  value={formData.quantity}
+                  onChange={handleChangeForm}
+                  required
+                />
+              </Box>
+
+              <Box>
+                <Typography sx={styles.label}>Seleccione un horario</Typography>
+                <Select
+                  name="timeSelected"
+                  value={formData.timeSelected}
+                  onChange={handleChangeForm}
+                  sx={styles.textFieldStyle}
+                  required
+                >
+                  <MenuItem value="mañana" sx={styles.textFieldStyle}>
+                    De 10:00 a 14:00
+                  </MenuItem>
+                  <MenuItem value="tarde" sx={styles.textFieldStyle}>
+                    De 13:00 a 19:00
+                  </MenuItem>
+                </Select>
               </Box>
             </Box>
           </form>
@@ -165,8 +183,5 @@ const Reserve = ({ id }) => {
     </Box>
   );
 };
-
-    
-    
 
 export default Reserve;
