@@ -101,7 +101,9 @@ const Reserve = ({ id }) => {
                 />
               </Box>
 
-              <Box sx={{ gridRow: {lg:"3"}, gridColumn: {lg:"2"} }}>
+              <Box
+                sx={{ gridRow: { xs: "6", lg: "3" }, gridColumn: { lg: "2" } }}
+              >
                 <Typography sx={styles.label}>Comentarios</Typography>
                 <TextField
                   sx={styles.textFieldStyle}
@@ -113,7 +115,7 @@ const Reserve = ({ id }) => {
                   onChange={handleChangeForm}
                 />
               </Box>
-              <Box>
+              <Box sx={{ gridRow: { xs: 5 , md:2}, gridColumn: { lg: "2" } }}>
                 <Typography sx={styles.label}>Cantidad de personas</Typography>
                 <TextField
                   sx={styles.textFieldStyle}
@@ -132,7 +134,7 @@ const Reserve = ({ id }) => {
                   name="timeSelected"
                   value={formData.timeSelected}
                   onChange={handleChangeForm}
-                  sx={styles.textFieldStyle}
+                  sx={styles.textFieldStyle }
                   required
                 >
                   <MenuItem value="mañana" sx={styles.textFieldStyle}>

@@ -14,7 +14,7 @@ export const container = {
 export const title = {
   fontWeight: "bold",
   textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-  marginBottom: "10rem",
+  marginBottom: "5rem",
   display: "flex",
   justifyContent: "center",
   color: "black",
@@ -37,7 +37,7 @@ export const containerImage1 = {
 
 export const imageStyle = {
   width: "100%", // ✅ Que no sobrepase el contenedor
-  maxWidth: { xs: "200px", sm: "300px", md: "350px" }, // ✅ Escala según breakpoint
+  maxWidth: { xs: "200px", sm: "200px", md: "300px" }, // ✅ Escala según breakpoint
   height: "auto",
   marginLeft: { xs: "30%", sm: "30%", md: "80%" }, // ✅ En xs no hay desplazamiento
   transform: { xs: "none", sm: "translateX(-50%)" }, // ✅ Solo se aplica desplazamiento en pantallas más grandes

@@ -8,12 +8,12 @@ export const cardContainer = {
   boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
   position: "relative",
   overflow: "hidden",
-  my: 2, // Margen vertical para separación entre cards
+  my: 1, // Margen vertical para separación entre cards
 };
 
 export const numberStyle = {
   position: "absolute",
-  top: { xs: "8%", lg: "15%" },
+  top: { xs: "8%", lg: "25%" },
   left: "50%",
   transform: "translateX(-50%)", // ✅ centra horizontalmente con precisión
   zIndex: 1,
@@ -24,10 +24,10 @@ export const numberStyle = {
 };
 
 export const imageStyle = {
-  width: "100%",
+  width: "auto",
   height: "auto",
   aspectRatio: "16/9", // ✅ mantiene proporción visual
-  maxHeight: { xs: 220, sm: 300, lg: 500 },
+  maxHeight: { xs: 220, sm: 300, lg: 650 },
   objectFit: "cover",
   borderRadius: 1,
   opacity: 0.5,

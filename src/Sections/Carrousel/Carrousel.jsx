@@ -55,12 +55,12 @@ const Carrousel = ({ id }) => {
             marginTop: { xs: 15, md: 0 },
             display: "flex",
             flexDirection: "column",
-            gap: { xs: 2, md: 5, lg: 5 },
+            gap: { xs: 2 },
             justifyItems: "center",
           }}
         >
           <Typography variant="h6" component="div" sx={styles.titleStyle}>
-            Viaja por el corazon de Mayorca
+            Viaja por el corazon de Mallorca
           </Typography>
           <Typography>
             <li style={styles.listItemStyle}>Para grupos de 6 a 8 personas.</li>
@@ -74,7 +74,7 @@ const Carrousel = ({ id }) => {
           <Typography component="p" style={styles.listItemStyle}>
             ¿Dudas?
           </Typography>
-          <Button sx={styles.whatsappButton}>Contactanos por WhatsApp</Button>
+          <Button sx={styles.whatsappButton}>Contáctanos por WhatsApp</Button>
         </Box>
       </Box>
     </>

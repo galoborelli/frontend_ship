@@ -45,31 +45,37 @@ export const rightBox = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  mt: { xs: 15, sm: 0 },
+  mt: { xs: 5, sm: 0 },
  
 };
 
 export const cardStyle = {
   position: "relative",
-  
-  width: "300px" ,
-  height: " 500px" ,
-  overflow:"hidden" ,
-  borderRadius: 4 ,
-  transform: {lg:"rotate(12deg) translateY(-50%) ", xs:"rotate(10deg) translateY(0%)"},
+  backgroundColor: "transparent",
+  width: "300px",
+  height: "500px",
+  overflow: "hidden",
+  borderRadius: 4,
+  boxShadow: "none",
+  transform: {
+    lg: "rotate(10deg) translateY(-40%)",
+    xs: "rotate(10deg) translateY(0%)",
+  },
   marginBottom: "2rem",
 };
 
 export const cardImageStyle = {
   position: "absolute",
-  top: "0",
-  left: "0",
+  top: 0,
+  left: 0,
   width: "100%",
   height: "100%",
-  
   objectFit: "cover",
-
+  objectPosition: "center",
+  borderRadius: 4,
+  backgroundColor: "transparent",
 };
+
 
 export const sendButtonBox = {
   fontSize: "12px",

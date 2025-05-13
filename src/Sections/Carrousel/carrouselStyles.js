@@ -10,11 +10,10 @@ export const carrouselContainer = {
   alignItems: "flex-start",
   flexDirection: { xs: "column", md: "row", lg: "row" },
   margin: "0 auto",
-  marginBottom: { xs: 5, md: 10 },
-  padding: { xs: 2, md: 5 },
+  marginBottom: { xs: 5, md: 5 },
+  padding: { xs: 2, md: 2 },
   flexWrap: "wrap",
 };
-
 
 
 
@@ -23,35 +22,36 @@ export const imageContainer = {
   position: "relative",
   overflow: "hidden",
   width: "100%",
-  height: "100%",
+  height: { xs: "300px", sm: "400px", lg: "750px" },
   maxHeight: "700px",
   margin: "0 auto",
   borderRadius: 2,
   marginRight: { xs: 0, md: 5, lg: 35 },
   maxWidth: {
-    xs: "90%", // En pantallas extra pequeñas ocupa el 90% del ancho
-    sm: "80%", // En pantallas pequeñas ocupa el 80% del ancho
-    md: "600px", // En pantallas medianas y grandes un máximo de 600px
+    xs: "90%",
+    sm: "80%",
+    md: "600px",
   },
+  backgroundColor: "transparent", // evita bordes blancos si hay espacios
 };
-
 
 export const imageSlider = {
   display: "flex",
   width: "100%",
   height: "100%",
-  transition: "transform 0.5s ease-in-out", 
+  borderRadius: 2,
+  transition: "transform 0.5s ease-in-out",
 };
 
 export const imageStyle = {
   width: "100%",
   height: "100%",
   display: "block",
-  objectFit: "cover", // ✅ Muestra toda la imagen sin recortes
-  objectPosition: "center", // Centra la imagen en el contenedor
+  objectFit: "cover",
+  objectPosition: "center",
   flexShrink: 0,
+  borderRadius: 2,
 };
-
 
 
 export const navButton = {

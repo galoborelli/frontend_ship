@@ -33,7 +33,6 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
-
   const burguerMenu = () => {
     setMenuOpen(!menuOpen);
   }
@@ -61,7 +60,7 @@ const Header = () => {
                 onClose={burguerMenu}
                 ModalProps={{
                   keepMounted: true,
-                  onBackdropClick: () => burguerMenu,
+                  onBackdropClick: burguerMenu,
                 }}
                 PaperProps={{ sx: styles.drawerPaper }}
               >
