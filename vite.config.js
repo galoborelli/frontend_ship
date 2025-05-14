@@ -13,6 +13,7 @@ export default defineConfig({
       "@Components": path.resolve(__dirname, "./src/Components"),
       "@Sections": path.resolve(__dirname, "./src/Sections"),
       "@Pages": path.resolve(__dirname, "./src/Pages"),
+      "@Redux": path.resolve(__dirname, "./src/redux"),
     },
   },
 });
