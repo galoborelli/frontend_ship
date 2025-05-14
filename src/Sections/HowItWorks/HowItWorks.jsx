@@ -3,33 +3,40 @@ import { Box, Typography, CardMedia } from "@mui/material";
 import cardImage from "@assets/hero-image.png";
 import arrowImage2 from "@assets/flecha-01.png";
 import * as styles from "./howItWorksStyles"; // Estilos actualizados
+import { useTranslation } from "react-i18next"; // Importa useTranslation para manejar los idiomas
 
-const steps = [
-  {
-    number: "1",
-    title: "Elige el día",
-    description: "De 10:00 a 14:00 · 13:00 a 19:00",
-    image: cardImage,
-  },
-  {
-    number: "2",
-    title: "Reserva",
-    description: "Llena el formulario aquí",
-    image: cardImage,
-  },
-  {
-    number: "3",
-    title: "Navega",
-    description: "Rápido, fácil y sin preocupaciones",
-    image: cardImage,
-  },
-];
+
+
 
 const HowItWorks = ({ id }) => {
+  const { t } = useTranslation();
+
+  const steps = [
+    {
+      number: "1",
+      title: t("howItWorks.steps.0.title"),
+      description: t("howItWorks.steps.0.description"),
+      image: cardImage,
+    },
+    {
+      number: "2",
+      title: t("howItWorks.steps.1.title"),
+      description: t("howItWorks.steps.1.description"),
+      image: cardImage,
+    },
+    {
+      number: "3",
+      title: t("howItWorks.steps.2.title"),
+      description: t("howItWorks.steps.2.description"),
+      image: cardImage,
+    },
+  ];
+
+  
   return (
     <Box id={id} sx={styles.container}>
       <Typography variant="h1" component="h2" sx={styles.title}>
-        ¿How it works?
+        {t("howItWorks.title")}
       </Typography>
       <Box sx={styles.stepsBox}>
         {steps.map((step) => (

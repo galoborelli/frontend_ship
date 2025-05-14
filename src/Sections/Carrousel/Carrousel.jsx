@@ -4,11 +4,15 @@ import { IconButton, Box, Typography, Button } from "@mui/material";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import * as styles from "./carrouselStyles"; // Importa todos los estilos
+import { useTranslation } from "react-i18next";
+
+
 
 let images = [cardImage, cardImage, cardImage];
 
 const Carrousel = ({ id }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { t } = useTranslation();
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -38,7 +42,6 @@ const Carrousel = ({ id }) => {
               />
             ))}
           </Box>
-          {/* Botones de navegación */}
           <IconButton onClick={goToPrev} sx={styles.prevButton}>
             <ArrowBackIosNewRoundedIcon />
           </IconButton>
@@ -60,21 +63,23 @@ const Carrousel = ({ id }) => {
           }}
         >
           <Typography variant="h6" component="div" sx={styles.titleStyle}>
-            Viaja por el corazon de Mallorca
+            {t("carrousel.title")}
           </Typography>
           <Typography>
-            <li style={styles.listItemStyle}>Para grupos de 6 a 8 personas.</li>
-            <li style={styles.listItemStyle}>
-              Equipado con música, toldo y refrigerador
-            </li>
-            <li style={styles.listItemStyle}>
-              Navegación libre por las calas del Mediterráneo
-            </li>
+            {t("carrousel.features", { returnObjects: true }).map(
+              (feature, index) => (
+                <li key={index} style={styles.listItemStyle}>
+                  {feature}
+                </li>
+              )
+            )}
           </Typography>
           <Typography component="p" style={styles.listItemStyle}>
-            ¿Dudas?
+            {t("carrousel.contactUs")}
           </Typography>
-          <Button sx={styles.whatsappButton}>Contáctanos por WhatsApp</Button>
+          <Button sx={styles.whatsappButton}>
+            {t("carrousel.whatsappButton")}
+          </Button>
         </Box>
       </Box>
     </>

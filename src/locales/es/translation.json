@@ -1,0 +1,73 @@
+{
+  "hero": {
+    "title_line1": "Planea tu propia",
+    "title_line2": "Aventura",
+    "subtitle": "Pacta un punto de inicio y comienza a disfrutar",
+    "primaryButton": "Comenzar inscripción",
+    "secondaryButton": "Whatsapp"
+  },
+  "header": {
+    "home": "INICIO",
+    "gallery": "GALERÍA",
+    "howItWorks": "CÓMO FUNCIONA",
+    "contactUs": "CONTÁCTANOS",
+    "letsStart": "COMENCEMOS"
+  },
+  "howItWorks": {
+    "title": "¿Cómo funciona?",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Elige el día",
+        "description": "De 10:00 a 14:00 · 13:00 a 19:00"
+      },
+      {
+        "number": "2",
+        "title": "Reserva",
+        "description": "Llena el formulario aquí"
+      },
+      {
+        "number": "3",
+        "title": "Navega",
+        "description": "Rápido, fácil y sin preocupaciones"
+      }
+    ]
+  },
+  "carrousel": {
+    "title": "Viaja por el corazón de Mallorca",
+    "features": [
+      "Para grupos de 6 a 8 personas.",
+      "Equipado con música, toldo y refrigerador.",
+      "Navegación libre por las calas del Mediterráneo."
+    ],
+    "contactUs": "¿Dudas?",
+    "whatsappButton": "Contáctanos por WhatsApp"
+  },
+  "reserve": {
+    "title": "Reservá tu experiencia.",
+    "subtitle": "Completá el formulario y te responderemos lo antes posible. <br /> También puedes escribirnos directamente por WhatsApp.",
+    "name": "Nombre completo",
+    "contact": "Email o WhatsApp",
+    "date": "Fecha de reserva",
+    "comments": "Comentarios",
+    "quantity": "Cantidad de personas",
+    "time": "Seleccione un horario",
+    "morning": "De 10:00 a 14:00",
+    "afternoon": "De 13:00 a 19:00",
+    "terms": "Acepto términos y condiciones",
+    "submit": "Enviar"
+  },
+  "footer": {
+    "contactUs": "Contactanos",
+    "location": "Ubicación:",
+    "pickupSpot": "(El punto de recogida se acuerda después de la reserva)",
+    "availability": "Disponibilidad:",
+    "everyDay": "Todos los días – 2 turnos:",
+    "turns": "10:00–14:00 / 13:00–19:00",
+    "email": "Correo electrónico:",
+    "social": {
+      "instagram": "fer_sobame_la_rata",
+      "facebook": "fer_sobame_la_rata"
+    }
+  }
+}

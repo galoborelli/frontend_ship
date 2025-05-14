@@ -3,13 +3,16 @@ import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import styles from "./styleFooter";
+import { useTranslation } from "react-i18next";
 
 const Footer = ({ id }) => {
+  const { t } = useTranslation();
+
   return (
     <Box id={id} sx={styles.footerContainer}>
       <Container maxWidth="xl" sx={{ px: { xs: 2, md: 6 } }}>
         <Typography variant="h6" sx={styles.title}>
-          Contact us
+          {t("footer.contactUs")}
         </Typography>
         <Grid
           container
@@ -19,29 +22,29 @@ const Footer = ({ id }) => {
         >
           <Grid item xs={12} md={4}>
             <Typography variant="subtitle1" sx={styles.subtitle}>
-              Location:
+              {t("footer.location")}
             </Typography>
             <Typography variant="body1" sx={styles.bodyText}>
               <em>Mallorca, Spain</em>
               <br />
-              <em>(Pick-up spot to be arranged after booking)</em>
+              <em>{t("footer.pickupSpot")}</em>
             </Typography>
           </Grid>
 
           <Grid item xs={12} md={4}>
             <Typography variant="subtitle1" sx={styles.subtitle}>
-              Availability:
+              {t("footer.availability")}
             </Typography>
             <Typography variant="body1" sx={styles.bodyText}>
-              <em>Every day – 2 turns:</em>
+              <em>{t("footer.everyDay")}</em>
               <br />
-              <em>10:00–14:00 / 13:00–19:00</em>
+              <em>{t("footer.turns")}</em>
             </Typography>
           </Grid>
 
           <Grid item xs={12} md={4}>
             <Typography variant="subtitle1" sx={styles.subtitle}>
-              Email:
+              {t("footer.email")}
             </Typography>
             <Typography variant="body1" sx={styles.bodyText}>
               book@mallorcaboatfun.com
@@ -53,11 +56,15 @@ const Footer = ({ id }) => {
             >
               <Stack direction="row" alignItems="center" spacing={1}>
                 <InstagramIcon />
-                <Typography variant="body1">fer_sobame_la_rata</Typography>
+                <Typography variant="body1">
+                  {t("footer.social.instagram")}
+                </Typography>
               </Stack>
               <Stack direction="row" alignItems="center" spacing={1}>
                 <FacebookIcon />
-                <Typography variant="body1">fer_sobame_la_rata</Typography>
+                <Typography variant="body1">
+                  {t("footer.social.facebook")}
+                </Typography>
               </Stack>
             </Stack>
           </Grid>

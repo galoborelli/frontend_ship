@@ -15,9 +15,12 @@ import {
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers";
+import { useTranslation } from "react-i18next"; // Importa el hook de traducción
 import * as styles from "./reserveStyle";
 
 const Reserve = ({ id }) => {
+  const { t } = useTranslation(); // Utiliza el hook de traducción
+
   const [formData, setFormData] = useState({
     name: "",
     contact: "",
@@ -39,7 +42,7 @@ const Reserve = ({ id }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, contact, dateSelected, coment, quantity, terms } = formData;
-    if (!terms) return alert("Debe aceptar los términos y condiciones");
+    if (!terms) return alert(t("reserve.terms"));
     const data = {
       name,
       contact,
@@ -53,17 +56,17 @@ const Reserve = ({ id }) => {
   return (
     <Box id={id} sx={styles.reserveContainer}>
       <Box sx={styles.formBox}>
-        <Typography sx={styles.titleBox}>Reservá tu experiencia.</Typography>
-        <Typography sx={styles.subTitleStyle}>
-          Completá el formulario y te responderemos lo antes posible. <br />
-          También puedes escribirnos directamente por WhatsApp.
-        </Typography>
+        <Typography sx={styles.titleBox}>{t("reserve.title")}</Typography>
+        <Typography
+          sx={styles.subTitleStyle}
+          dangerouslySetInnerHTML={{ __html: t("reserve.subtitle") }}
+        />
 
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <form onSubmit={handleSubmit}>
             <Box sx={styles.formGrid}>
               <Box>
-                <Typography sx={styles.label}>Nombre completo</Typography>
+                <Typography sx={styles.label}>{t("reserve.name")}</Typography>
                 <TextField
                   sx={styles.textFieldStyle}
                   name="name"
@@ -75,7 +78,9 @@ const Reserve = ({ id }) => {
               </Box>
 
               <Box>
-                <Typography sx={styles.label}>Email o WhatsApp</Typography>
+                <Typography sx={styles.label}>
+                  {t("reserve.contact")}
+                </Typography>
                 <TextField
                   sx={styles.textFieldStyle}
                   name="contact"
@@ -87,7 +92,7 @@ const Reserve = ({ id }) => {
               </Box>
 
               <Box>
-                <Typography sx={styles.label}>Fecha de reserva</Typography>
+                <Typography sx={styles.label}>{t("reserve.date")}</Typography>
                 <DatePicker
                   value={formData.dateSelected}
                   onChange={(newDate) =>
@@ -104,7 +109,9 @@ const Reserve = ({ id }) => {
               <Box
                 sx={{ gridRow: { xs: "6", lg: "3" }, gridColumn: { lg: "2" } }}
               >
-                <Typography sx={styles.label}>Comentarios</Typography>
+                <Typography sx={styles.label}>
+                  {t("reserve.comments")}
+                </Typography>
                 <TextField
                   sx={styles.textFieldStyle}
                   name="coment"
@@ -115,8 +122,11 @@ const Reserve = ({ id }) => {
                   onChange={handleChangeForm}
                 />
               </Box>
-              <Box sx={{ gridRow: { xs: 5 , md:2}, gridColumn: { lg: "2" } }}>
-                <Typography sx={styles.label}>Cantidad de personas</Typography>
+
+              <Box sx={{ gridRow: { xs: 5, md: 2 }, gridColumn: { lg: "2" } }}>
+                <Typography sx={styles.label}>
+                  {t("reserve.quantity")}
+                </Typography>
                 <TextField
                   sx={styles.textFieldStyle}
                   name="quantity"
@@ -129,19 +139,19 @@ const Reserve = ({ id }) => {
               </Box>
 
               <Box>
-                <Typography sx={styles.label}>Seleccione un horario</Typography>
+                <Typography sx={styles.label}>{t("reserve.time")}</Typography>
                 <Select
                   name="timeSelected"
                   value={formData.timeSelected}
                   onChange={handleChangeForm}
-                  sx={styles.textFieldStyle }
+                  sx={styles.textFieldStyle}
                   required
                 >
                   <MenuItem value="mañana" sx={styles.textFieldStyle}>
-                    De 10:00 a 14:00
+                    {t("reserve.morning")}
                   </MenuItem>
                   <MenuItem value="tarde" sx={styles.textFieldStyle}>
-                    De 13:00 a 19:00
+                    {t("reserve.afternoon")}
                   </MenuItem>
                 </Select>
               </Box>
@@ -171,14 +181,14 @@ const Reserve = ({ id }) => {
                 required
               />
             }
-            label="Acepto términos y condiciones"
+            label={t("reserve.terms")}
           />
           <Button
             sx={styles.sendButton}
             endIcon={<span>➔</span>}
             onClick={handleSubmit}
           >
-            Enviar
+            {t("reserve.submit")}
           </Button>
         </Box>
       </Box>

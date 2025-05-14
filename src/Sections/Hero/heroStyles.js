@@ -64,10 +64,10 @@ export const secondaryButton = {
 };
 
 export const title = {
-  fontSize: { xs: "0.5rem", sm: "3rem", md: "2rem" },
+  fontSize: { xs: "2rem", sm: "3.5rem", md: "6rem" },
   color: "white",
   fontWeight: 700,
   textAlign: "left",
-  lineHeight: { xs: 1.2, sm: 1.3, md: 1.4 },
-  // marginBottom: { xs: 1, sm: 1.5, md: 2 }, // Espacio entre el título y el párrafo
+  lineHeight: 1.2,
+  marginBottom: { xs: 1, sm: 1.5, md: 2 }, // Espacio entre el título y el párrafo
 };

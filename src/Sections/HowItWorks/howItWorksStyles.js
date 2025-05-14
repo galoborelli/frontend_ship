@@ -12,6 +12,8 @@ export const container = {
 };
 
 export const title = {
+  fontSize: { xs: "2.8rem", sm: "3.5rem", md: "6rem" },
+  textAlign: "center",
   fontWeight: "bold",
   textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
   marginBottom: "5rem",

@@ -1,0 +1,73 @@
+{
+  "hero": {
+    "title_line1": "Plan your own",
+    "title_line2": "Adventure",
+    "subtitle": "Set a starting point and start enjoying",
+    "primaryButton": "Start registration",
+    "secondaryButton": "Whatsapp"
+  },
+  "header": {
+    "home": "HOME",
+    "gallery": "GALLERY",
+    "howItWorks": "HOW IT WORKS",
+    "contactUs": "CONTACT US",
+    "letsStart": "LET'S START"
+  },
+  "howItWorks": {
+    "title": "¿Cómo funciona?",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Elige el día",
+        "description": "De 10:00 a 14:00 · 13:00 a 19:00"
+      },
+      {
+        "number": "2",
+        "title": "Reserva",
+        "description": "Llena el formulario aquí"
+      },
+      {
+        "number": "3",
+        "title": "Navega",
+        "description": "Rápido, fácil y sin preocupaciones"
+      }
+    ]
+  },
+  "carrousel": {
+    "title": "Travel through the heart of Mallorca",
+    "features": [
+      "For groups of 6 to 8 people.",
+      "Equipped with music, awning, and refrigerator.",
+      "Free navigation through the Mediterranean coves."
+    ],
+    "contactUs": "Questions?",
+    "whatsappButton": "Contact us on WhatsApp"
+  },
+  "reserve": {
+    "title": "Reserve your experience.",
+    "subtitle": "Fill out the form and we will get back to you as soon as possible. <br /> You can also write to us directly via WhatsApp.",
+    "name": "Full Name",
+    "contact": "Email or WhatsApp",
+    "date": "Reservation Date",
+    "comments": "Comments",
+    "quantity": "Number of people",
+    "time": "Select a time",
+    "morning": "From 10:00 to 14:00",
+    "afternoon": "From 13:00 to 19:00",
+    "terms": "I accept terms and conditions",
+    "submit": "Submit"
+  },
+  "footer": {
+    "contactUs": "Contact us",
+    "location": "Location:",
+    "pickupSpot": "(Pick-up spot to be arranged after booking)",
+    "availability": "Availability:",
+    "everyDay": "Every day – 2 turns:",
+    "turns": "10:00–14:00 / 13:00–19:00",
+    "email": "Email:",
+    "social": {
+      "instagram": "fer_sobame_la_rata",
+      "facebook": "fer_sobame_la_rata"
+    }
+  }
+}
