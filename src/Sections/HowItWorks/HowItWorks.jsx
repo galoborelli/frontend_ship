@@ -4,19 +4,13 @@ import cardImage from "@assets/hero-image.png";
 import arrowImage2 from "@assets/flecha-01.png";
 import * as styles from "./howItWorksStyles"; // Estilos actualizados
 import { useTranslation } from "react-i18next"; // Importa useTranslation para manejar los idiomas
-import { useDispatch, useSelector } from "react-redux";
-import { loaderActive, loaderStop } from "@Redux/actions/loaderActions";
+
 
 
 
 
 const HowItWorks = ({ id }) => {
   const { t } = useTranslation();
-
-  const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.loader.isLoadingById["test"]);
-
-
 
   const steps = [
     {
@@ -58,11 +52,6 @@ const HowItWorks = ({ id }) => {
           alt="Flecha"
         />
       </Box>
-      <div>
-        <p>Estado: {isLoading ? "Cargando..." : "Listo"}</p>
-        <button onClick={() => dispatch(loaderActive("test"))}>Activar</button>
-        <button onClick={() => dispatch(loaderStop("test"))}>Detener</button>
-      </div>
     </Box>
   );
 };

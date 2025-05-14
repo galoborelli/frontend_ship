@@ -13,26 +13,26 @@
     "contactUs": "CONTACT US",
     "letsStart": "LET'S START"
   },
-  "howItWorks": {
-    "title": "¿Cómo funciona?",
+"howItWorks": {
+    "title": "How it works?",
     "steps": [
-      {
-        "number": "1",
-        "title": "Elige el día",
-        "description": "De 10:00 a 14:00 · 13:00 a 19:00"
-      },
-      {
-        "number": "2",
-        "title": "Reserva",
-        "description": "Llena el formulario aquí"
-      },
-      {
-        "number": "3",
-        "title": "Navega",
-        "description": "Rápido, fácil y sin preocupaciones"
-      }
-    ]
-  },
+    {
+      "number": "1",
+      "title": "Choose the day",
+      "description": "From 10:00 to 14:00 · 13:00 to 19:00"
+    },
+    {
+      "number": "2",
+      "title": "Book",
+      "description": "Fill out the form here"
+    },
+    {
+      "number": "3",
+      "title": "Navigate",
+      "description": "Fast, easy, and worry-free"
+    }
+   ]
+},
   "carrousel": {
     "title": "Travel through the heart of Mallorca",
     "features": [
@@ -71,3 +71,4 @@
     }
   }
 }
+
