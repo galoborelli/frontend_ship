@@ -1,14 +1,30 @@
-import React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import {React, useEffect} from "react";
+import { Box, Button, CardMedia, Typography } from "@mui/material";
 import * as styles from "./heroStyles";
 import { HashLink } from "react-router-hash-link";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+
+import Loader from "@Components/Loader/Loader";
 
 const Hero = ({ id }) => {
   const { t } = useTranslation();
 
+  const isLoading = useSelector(state => state.loader.isLoadingById['images']);
+  const { images } = useSelector(state => state.images);
+  const imagesHero = images?.filter((img) => img.section === "hero");
+
   return (
-    <Box id={id} sx={styles.heroContainer}>
+    isLoading ? ( <Loader/> )
+    : (
+      <Box id={id} sx={styles.heroContainer}>
+
+      {imagesHero?.length > 0 ? (
+        <CardMedia component="img" image={imagesHero[1].image_url} sx={styles.heroImage} />
+      ) : (
+        <div>No hay imágenes disponibles</div> // o dejalo vacío si preferís
+      )}
+
       <Box sx={styles.contentBox}>
         <Typography variant="h1" component="h1" sx={styles.title}>
           {t("hero.title_line1")} <br />
@@ -34,7 +50,9 @@ const Hero = ({ id }) => {
           </Button>
         </Box>
       </Box>
-    </Box>
+    </Box>  
+    )
+    
   );
 };
 

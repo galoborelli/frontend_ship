@@ -1,11 +1,12 @@
 import React from "react";
 import { Card, CardMedia, Typography, Box } from "@mui/material";
 import * as styles from './StyledCard';
-
+import { useSelector } from "react-redux";
 
 
 
 const StepCard = ({ number, title, description, image }) => {
+  
   return (
     <Card sx={styles.cardContainer}>
       <Box sx={styles.numberStyle}>{number}</Box>

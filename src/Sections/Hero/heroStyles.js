@@ -1,6 +1,6 @@
 // heroStyles.js
 export const heroContainer = {
-  backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0) 100%), url(https://st4.depositphotos.com/1993283/23704/i/450/depositphotos_237042516-stock-photo-yacht-sea-top-view-aerail.jpg)`,
+
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
@@ -16,6 +16,19 @@ export const heroContainer = {
   overflow: "hidden", // Evita el desbordamiento de contenido en pantallas pequeñas
 };
 
+export const heroImage = {
+  backgroundSize: "cover",
+  position: "absolute",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  height: "80vh",
+  width: "100vw",
+  
+  overflow: "hidden", // Evita el desbordamiento de contenido en pantallas pequeñas
+}
+
+
+
 export const contentBox = {
   display: "flex",
   flexDirection: "column",
@@ -23,6 +36,7 @@ export const contentBox = {
   alignItems: "flex-start", // Alinea los textos a la izquierda
   height: "100%", // Toma todo el alto del viewport
   width: "100%", // Asegura que ocupe todo el ancho disponible
+  position: "relative",
   px: { xs: 2, sm: 4, md: 6, lg: 8 }, // Padding horizontal responsivo
   ml: { xs: 2, sm: 4, md: 6, lg: 8 }, // Margen izquierdo responsivo
 };
