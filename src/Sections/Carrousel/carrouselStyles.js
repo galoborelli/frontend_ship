@@ -80,15 +80,29 @@ export const titleStyle = {
   fontWeight: "bold",
   mb: "2rem",
   color: "black",
-  fontSize: "3.5rem",
+  fontSize: {xs:"2rem",lg:"3.5rem"},
 };
 
 export const listItemStyle = {
+  marginBottom: {xs:"40px",lg:"8px"},
+  color: "#333", // gris oscuro suave
+  fontSize: { xs: "1rem", md: "1.3rem", lg: "1.5rem" }, // ajustado a un tamaño legible
+  listStyleType: "disc", 
+  listStylePosition: "inside", 
+  "&::marker": {
+    color: "#000", // bullet negro
+  },
+};
+
+
+
+export const doubtsStyle = {
+  marginTop: {lg:"55px",},
   marginBottom: "8px",
   color: "black",
   fontWeight: "bold",
   fontSize: "1.2rem",
-};
+}
 
 export const whatsappButton = {
   borderRadius: 5,

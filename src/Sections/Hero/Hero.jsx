@@ -1,4 +1,4 @@
-import {React, useEffect} from "react";
+import {React} from "react";
 import { Box, Button, CardMedia, Typography } from "@mui/material";
 import * as styles from "./heroStyles";
 import { HashLink } from "react-router-hash-link";
@@ -12,15 +12,15 @@ const Hero = ({ id }) => {
 
   const isLoading = useSelector(state => state.loader.isLoadingById['images']);
   const { images } = useSelector(state => state.images);
-  const imagesHero = images?.filter((img) => img.section === "hero");
+  const imageHero = images?.filter((img) => img.title === "hero-image");
 
   return (
     isLoading ? ( <Loader/> )
     : (
       <Box id={id} sx={styles.heroContainer}>
 
-      {imagesHero?.length > 0 ? (
-        <CardMedia component="img" image={imagesHero[1].image_url} sx={styles.heroImage} />
+      {imageHero?.length > 0 ? (
+        <CardMedia component="img" image={imageHero[0].image_url} sx={styles.heroImage} />
       ) : (
         <div>No hay imágenes disponibles</div> // o dejalo vacío si preferís
       )}

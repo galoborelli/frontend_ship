@@ -8,16 +8,20 @@ export const reserveContainer = {
   padding: "2rem",
   margin: "0 auto",
   marginTop: {xs:14,lg:20},
+  backgroundColor: "white",
+  borderRadius: 4,
+  
 };
 
 export const formBox = {
   flex: 1,
+
 };
 
 export const titleBox = {
   fontWeight: "bold",
   color: "#333",
-  fontSize: {xs: "1.5rem", sm: "2rem",lg: "4.5rem"},
+  fontSize: {xs: "1.5rem", sm: "2rem",lg: "4rem"},
 };
 
 export const subTitleStyle = {
@@ -46,7 +50,10 @@ export const rightBox = {
   flexDirection: "column",
   alignItems: "center",
   mt: { xs: 5, sm: 0 },
- 
+  backgroundColor: "white",
+  borderRadius: 4,
+  position: "relative",
+  left:{md: "-50px",xs:"0"}, // mueve el contenedor 50px a la izquierda
 };
 
 export const cardStyle = {

@@ -3,7 +3,7 @@ import { GET_IMAGES_ERROR, GET_IMAGES_SUCCESS } from "../actions";
 const initialState = {
     images: [],
     error: null,
-    loading: false
+
 }
 
 export default function bannerReducer(state = initialState, action){

@@ -57,7 +57,7 @@ const Carrousel = ({ id }) => {
             flex: 1,
             minWidth: 0,
             ml: { md: 6, lg: 15 },
-            marginTop: { xs: 15, md: 0 },
+            marginTop: { xs: 15, md:0 },
             display: "flex",
             flexDirection: "column",
             gap: { xs: 2 },
@@ -67,16 +67,18 @@ const Carrousel = ({ id }) => {
           <Typography variant="h6" component="div" sx={styles.titleStyle}>
             {t("carrousel.title")}
           </Typography>
-          <Typography>
-            {t("carrousel.features", { returnObjects: true }).map(
-              (feature, index) => (
-                <li key={index} style={styles.listItemStyle}>
-                  {feature}
-                </li>
-              )
-            )}
-          </Typography>
-          <Typography component="p" style={styles.listItemStyle}>
+          <Box component="ul" sx={{ paddingLeft: 2, margin: 0 }}>
+  {t("carrousel.features", { returnObjects: true }).map((feature, index) => (
+    <Box
+      component="li"
+      key={index}
+      sx={styles.listItemStyle}
+    >
+      {feature}
+    </Box>
+  ))}
+</Box>
+          <Typography component="p" sx={styles.doubtsStyle}>
             {t("carrousel.contactUs")}
           </Typography>
           <Button sx={styles.whatsappButton}>

@@ -21,6 +21,7 @@ export const heroImage = {
   position: "absolute",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
+  
   height: "80vh",
   width: "100vw",
   

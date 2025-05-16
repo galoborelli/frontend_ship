@@ -12,32 +12,43 @@ const HowItWorks = ({ id }) => {
 
   const isLoading = useSelector(state => state.loader.isLoadingById['images']);
   const { images } = useSelector(state => state.images);
-  const imagesHowItWorks = images?.filter((img) => img.section === "how-it-works");
+  const imagesHowItWorks = images?.filter(img => img.section === "how-it-works");
 
- 
-  const steps = [
-    {
-      number: "1",
-      title: t("howItWorks.steps.0.title"),
-      description: t("howItWorks.steps.0.description"),
-      image: imagesHowItWorks[1].image_url
-    },
-    {
-      number: "2",
-      title: t("howItWorks.steps.1.title"),
-      description: t("howItWorks.steps.1.description"),
-      image: imagesHowItWorks[2].image_url,
-    },
-    {
-      number: "3",
-      title: t("howItWorks.steps.2.title"),
-      description: t("howItWorks.steps.2.description"),
-      image: imagesHowItWorks[0].image_url,}
+  const hasEnoughImages = imagesHowItWorks && imagesHowItWorks.length > 0;
+
+  if (isLoading || !hasEnoughImages) {
+    return <Loader />;
+  }
+
+  
+  
+  // i18next no expone directamente los arrays, pero puedes usar la función t con { returnObjects: true }
+  const stepsTranslations = t("howItWorks.steps", { returnObjects: true });
+
+  // Ahora construimos dinámicamente el array steps, combinando texto e imágenes
+  const steps = stepsTranslations.map((step, index) => ({
+    number: (index + 1).toString(),
+    title: step.title,
+    description: step.description,
+    image: imagesHowItWorks[index % imagesHowItWorks.length].image_url, // por si hay menos imágenes que pasos, se repite
+  }));
+
+// 2. Intercambiar el orden de imagenes
+if (steps.length >= 3) {
+  
+  const newImagesOrder = [
+    steps[0].image,  
+    steps[2].image,  
+    steps[1].image   
   ];
 
+  // Asignar el nuevo orden de imágenes
+  steps[0].image = newImagesOrder[2];
+  steps[1].image = newImagesOrder[1];
+  steps[2].image = newImagesOrder[0];
+}
+
   return (
-    isLoading ? ( <Loader/> )
-    : (
     <Box id={id} sx={styles.container}>
       <Typography variant="h1" component="h2" sx={styles.title}>
         {t("howItWorks.title")}
@@ -56,8 +67,8 @@ const HowItWorks = ({ id }) => {
         />
       </Box>
     </Box>
-    )
   );
 };
+
 
 export default HowItWorks;
