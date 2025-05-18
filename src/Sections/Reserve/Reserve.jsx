@@ -17,6 +17,8 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { useTranslation } from "react-i18next"; // Importa el hook de traducción
 import * as styles from "./reserveStyle";
+import axios from "axios";
+
 
 const Reserve = ({ id }) => {
   const { t } = useTranslation(); // Utiliza el hook de traducción
@@ -24,33 +26,50 @@ const Reserve = ({ id }) => {
   const [formData, setFormData] = useState({
     name: "",
     contact: "",
-    dateSelected: null,
-    timeSelected: "",
+    date_reserve: '',
+    time_reserve: "",
     coment: "",
-    quantity: "",
+    cuantity: "",
     terms: false,
   });
+
+  const formatToISODate = (date) => {
+    return new Date(date).toISOString().split('T')[0]; // "YYYY-MM-DD"
+  };
 
   const handleChangeForm = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
       [name]: type === "checkbox" ? checked : value,
+      
     });
+    console.log(formData);
   };
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, contact, dateSelected, coment, quantity, terms } = formData;
+    const { name, contact, dateSelected, timeSelected, coment, quantity, terms } = formData;
     if (!terms) return alert(t("reserve.terms"));
     const data = {
       name,
       contact,
-      dateSelected: dateSelected?.toISOString() || null,
+      date_reserve: dateSelected ? formatToISODate(dateSelected) : null,
+      time_reserve: timeSelected,
+      cuantity: quantity,
       coment,
-      quantity,
     };
     console.log(data);
+    try {
+      const url = import.meta.env.VITE_API_URL.replace(/\/$/, '');
+      if (formData) {
+        const response = await axios.post(`${url}/api/reserves/`, data);
+        console.log(response.data);
+      }
+    }  catch (error) {
+      console.error(error.response?.data || error, 'Error al enviar la reserva');
+    }
   };
 
   return (
@@ -147,10 +166,10 @@ const Reserve = ({ id }) => {
                   sx={styles.textFieldStyle}
                   required
                 >
-                  <MenuItem value="mañana" sx={styles.textFieldStyle}>
+                  <MenuItem value="1" sx={styles.textFieldStyle}>
                     {t("reserve.morning")}
                   </MenuItem>
-                  <MenuItem value="tarde" sx={styles.textFieldStyle}>
+                  <MenuItem value="2" sx={styles.textFieldStyle}>
                     {t("reserve.afternoon")}
                   </MenuItem>
                 </Select>

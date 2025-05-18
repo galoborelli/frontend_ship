@@ -26,12 +26,6 @@ export default function loaderReducer(state = initialState, action) {
         },
       };
 
-    case CLEAR_ERRORS:
-      return {
-        ...state,
-        isLoadingById: {},
-      };
-
     default:
       return state;
   }

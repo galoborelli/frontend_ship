@@ -19,13 +19,11 @@ const HowItWorks = ({ id }) => {
   if (isLoading || !hasEnoughImages) {
     return <Loader />;
   }
-
+console.log(imagesHowItWorks)
   
-  
-  // i18next no expone directamente los arrays, pero puedes usar la función t con { returnObjects: true }
   const stepsTranslations = t("howItWorks.steps", { returnObjects: true });
 
-  // Ahora construimos dinámicamente el array steps, combinando texto e imágenes
+  //  construimos dinámicamente el array steps, combinando texto e imágenes
   const steps = stepsTranslations.map((step, index) => ({
     number: (index + 1).toString(),
     title: step.title,
