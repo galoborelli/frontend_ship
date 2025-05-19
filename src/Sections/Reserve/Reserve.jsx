@@ -1,4 +1,3 @@
-import { useState } from "react";
 import cardImage from "@assets/hero-image.png";
 import {
   TextField,
@@ -15,61 +14,54 @@ import {
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers";
-import { useTranslation } from "react-i18next"; // Importa el hook de traducción
+import { useTranslation } from "react-i18next";
 import * as styles from "./reserveStyle";
-import axios from "axios";
-
+import { useSelector, useDispatch } from "react-redux";
+import { createReserve, updateBooking } from "../../redux/actions/reserveActions";
+import { parseISO } from "date-fns";
 
 const Reserve = ({ id }) => {
-  const { t } = useTranslation(); // Utiliza el hook de traducción
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const formData = useSelector((state) => state.booking.bookingForm);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    contact: "",
-    date_reserve: '',
-    time_reserve: "",
-    coment: "",
-    cuantity: "",
-    terms: false,
-  });
-
-  const formatToISODate = (date) => {
-    return new Date(date).toISOString().split('T')[0]; // "YYYY-MM-DD"
-  };
+  // Convierte el string ISO de Redux a objeto Date o null para DatePicker
+  const dateValue = formData.date_selected ? parseISO(formData.date_selected) : null;
 
   const handleChangeForm = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-      
-    });
-    console.log(formData);
+    const { name, value, checked, type } = e.target;
+
+    let newValue;
+    if (type === "checkbox") {
+      newValue = checked;
+    } else {
+      newValue = value;
+    }
+
+    dispatch(
+      updateBooking({
+        ...formData,
+        [name]: newValue,
+      })
+    );
   };
 
+  // Maneja el cambio de fecha, guardando en Redux la fecha formateada como string ISO (YYYY-MM-DD)
+  const handleDateChange = (newDate) => {
+    const formattedDate = newDate ? newDate.toISOString().split("T")[0] : "";
+    dispatch(
+      updateBooking({
+        ...formData,
+        date_selected: formattedDate,
+      })
+    );
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, contact, dateSelected, timeSelected, coment, quantity, terms } = formData;
-    if (!terms) return alert(t("reserve.terms"));
-    const data = {
-      name,
-      contact,
-      date_reserve: dateSelected ? formatToISODate(dateSelected) : null,
-      time_reserve: timeSelected,
-      cuantity: quantity,
-      coment,
-    };
-    console.log(data);
-    try {
-      const url = import.meta.env.VITE_API_URL.replace(/\/$/, '');
-      if (formData) {
-        const response = await axios.post(`${url}/api/reserves/`, data);
-        console.log(response.data);
-      }
-    }  catch (error) {
-      console.error(error.response?.data || error, 'Error al enviar la reserva');
-    }
+    if (!formData.terms) return alert(t("reserve.terms"));
+    console.log(formData);
+    dispatch(createReserve(formData));
   };
 
   return (
@@ -90,21 +82,19 @@ const Reserve = ({ id }) => {
                   sx={styles.textFieldStyle}
                   name="name"
                   placeholder="e.g. Max Steel"
-                  value={formData.name}
+                  value={formData.name || ""}
                   onChange={handleChangeForm}
                   required
                 />
               </Box>
 
               <Box>
-                <Typography sx={styles.label}>
-                  {t("reserve.contact")}
-                </Typography>
+                <Typography sx={styles.label}>{t("reserve.contact")}</Typography>
                 <TextField
                   sx={styles.textFieldStyle}
                   name="contact"
                   placeholder="e.g. +54 9 221 4567890"
-                  value={formData.contact}
+                  value={formData.contact || ""}
                   onChange={handleChangeForm}
                   required
                 />
@@ -113,45 +103,38 @@ const Reserve = ({ id }) => {
               <Box>
                 <Typography sx={styles.label}>{t("reserve.date")}</Typography>
                 <DatePicker
-                  value={formData.dateSelected}
-                  onChange={(newDate) =>
-                    setFormData({ ...formData, dateSelected: newDate })
-                  }
+                  value={dateValue}
+                  onChange={handleDateChange}
                   slotProps={{
                     textField: {
                       sx: styles.textFieldStyle,
+                      required: true,
                     },
                   }}
                 />
               </Box>
 
-              <Box
-                sx={{ gridRow: { xs: "6", lg: "3" }, gridColumn: { lg: "2" } }}
-              >
-                <Typography sx={styles.label}>
-                  {t("reserve.comments")}
-                </Typography>
+              <Box sx={{ gridRow: { xs: "6", lg: "3" }, gridColumn: { lg: "2" } }}>
+                <Typography sx={styles.label}>{t("reserve.comments")}</Typography>
                 <TextField
                   sx={styles.textFieldStyle}
                   name="coment"
                   multiline
                   minRows={4}
                   placeholder="e.g. Alguna petición especial..."
-                  value={formData.coment}
+                  value={formData.coment || ""}
                   onChange={handleChangeForm}
                 />
               </Box>
 
               <Box sx={{ gridRow: { xs: 5, md: 2 }, gridColumn: { lg: "2" } }}>
-                <Typography sx={styles.label}>
-                  {t("reserve.quantity")}
-                </Typography>
+                <Typography sx={styles.label}>{t("reserve.quantity")}</Typography>
                 <TextField
                   sx={styles.textFieldStyle}
                   name="quantity"
                   type="number"
                   placeholder="min. 2 max. 8"
-                  value={formData.quantity}
+                  value={formData.quantity || ""}
                   onChange={handleChangeForm}
                   required
                 />
@@ -160,8 +143,8 @@ const Reserve = ({ id }) => {
               <Box>
                 <Typography sx={styles.label}>{t("reserve.time")}</Typography>
                 <Select
-                  name="timeSelected"
-                  value={formData.timeSelected}
+                  name="time_selected"
+                  value={formData.time_selected || ""}
                   onChange={handleChangeForm}
                   sx={styles.textFieldStyle}
                   required
@@ -195,18 +178,14 @@ const Reserve = ({ id }) => {
             control={
               <Checkbox
                 name="terms"
-                checked={formData.terms}
+                checked={formData.terms || false}
                 onChange={handleChangeForm}
                 required
               />
             }
             label={t("reserve.terms")}
           />
-          <Button
-            sx={styles.sendButton}
-            endIcon={<span>➔</span>}
-            onClick={handleSubmit}
-          >
+          <Button sx={styles.sendButton} endIcon={<span>➔</span>} onClick={handleSubmit}>
             {t("reserve.submit")}
           </Button>
         </Box>

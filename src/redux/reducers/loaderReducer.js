@@ -1,4 +1,4 @@
-import { LOADER_ACTIVE, LOADER_STOP, CLEAR_ERRORS } from '../actions/index';
+import { LOADER_ACTIVE, LOADER_STOP } from '../actions/index';
 
 const initialState = {
   isLoadingById: {}, // { [id]: true | false }
