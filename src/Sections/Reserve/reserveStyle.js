@@ -66,7 +66,7 @@ export const cardStyle = {
   boxShadow: "none",
   transform: {
     lg: "rotate(10deg) translateY(-40%)",
-    xs: "rotate(10deg) translateY(0%)",
+    xs: "rotate(6deg) translateY(0%)",
   },
   marginBottom: "2rem",
 };

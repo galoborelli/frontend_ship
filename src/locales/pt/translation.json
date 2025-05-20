@@ -1,0 +1,74 @@
+{
+    "hero": {
+      "title_line1": "Planeje sua própria",
+      "title_line2": "Aventura",
+      "subtitle": "Escolha um ponto de partida e aproveite",
+      "primaryButton": "Iniciar cadastro",
+      "secondaryButton": "Whatsapp"
+    },
+    "header": {
+      "home": "INÍCIO",
+      "gallery": "GALERIA",
+      "howItWorks": "COMO FUNCIONA",
+      "contactUs": "CONTATO",
+      "letsStart": "COMEÇAR"
+    },
+    "howItWorks": {
+      "title": "Como funciona?",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Escolha o dia",
+          "description": "Das 10:00 às 14:00 · Das 13:00 às 19:00"
+        },
+        {
+          "number": "2",
+          "title": "Reserve",
+          "description": "Preencha o formulário aqui"
+        },
+        {
+          "number": "3",
+          "title": "Navegue",
+          "description": "Rápido, fácil e sem preocupações"
+        }
+      ]
+    },
+    "carrousel": {
+      "title": "Viaje pelo coração de Maiorca",
+      "features": [
+        "Para grupos de 6 a 8 pessoas.",
+        "Equipado com música, toldo e geladeira.",
+        "Navegação livre pelas enseadas do Mediterrâneo."
+      ],
+      "contactUs": "Dúvidas?",
+      "whatsappButton": "Fale conosco pelo WhatsApp"
+    },
+    "reserve": {
+      "title": "Reserve sua experiência.",
+      "subtitle": "Preencha o formulário e entraremos em contato o mais breve possível. <br /> Você também pode nos escrever diretamente pelo WhatsApp.",
+      "name": "Nome completo",
+      "contact": "E-mail ou WhatsApp",
+      "date": "Data da reserva",
+      "comments": "Comentários",
+      "quantity": "Número de pessoas",
+      "time": "Selecione um horário",
+      "morning": "Das 10:00 às 14:00",
+      "afternoon": "Das 13:00 às 19:00",
+      "terms": "Aceito os termos e condições",
+      "submit": "Enviar"
+    },
+    "footer": {
+      "contactUs": "Fale conosco",
+      "location": "Localização:",
+      "pickupSpot": "(Ponto de embarque será combinado após a reserva)",
+      "availability": "Disponibilidade:",
+      "everyDay": "Todos os dias – 2 turnos:",
+      "turns": "10:00–14:00 / 13:00–19:00",
+      "email": "E-mail:",
+      "social": {
+        "instagram": "fer_sobame_la_rata",
+        "facebook": "fer_sobame_la_rata"
+      }
+    }
+  }
+  

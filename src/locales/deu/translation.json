@@ -1,0 +1,74 @@
+{
+    "hero": {
+      "title_line1": "Plane dein eigenes",
+      "title_line2": "Abenteuer",
+      "subtitle": "Wähle einen Startpunkt und genieße",
+      "primaryButton": "Registrierung starten",
+      "secondaryButton": "Whatsapp"
+    },
+    "header": {
+      "home": "STARTSEITE",
+      "gallery": "GALERIE",
+      "howItWorks": "SO FUNKTIONIERT'S",
+      "contactUs": "KONTAKT",
+      "letsStart": "LOS GEHT'S"
+    },
+    "howItWorks": {
+      "title": "Wie funktioniert's?",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Wähle den Tag",
+          "description": "Von 10:00 bis 14:00 · 13:00 bis 19:00"
+        },
+        {
+          "number": "2",
+          "title": "Reservieren",
+          "description": "Fülle hier das Formular aus"
+        },
+        {
+          "number": "3",
+          "title": "Losfahren",
+          "description": "Schnell, einfach und sorgenfrei"
+        }
+      ]
+    },
+    "carrousel": {
+      "title": "Reise durch das Herz von Mallorca",
+      "features": [
+        "Für Gruppen von 6 bis 8 Personen.",
+        "Ausgestattet mit Musik, Markise und Kühlschrank.",
+        "Freies Navigieren durch die Buchten des Mittelmeers."
+      ],
+      "contactUs": "Fragen?",
+      "whatsappButton": "Kontaktiere uns über WhatsApp"
+    },
+    "reserve": {
+      "title": "Reserviere dein Erlebnis.",
+      "subtitle": "Fülle das Formular aus und wir melden uns so schnell wie möglich. <br /> Du kannst uns auch direkt über WhatsApp schreiben.",
+      "name": "Vollständiger Name",
+      "contact": "E-Mail oder WhatsApp",
+      "date": "Reservierungsdatum",
+      "comments": "Kommentare",
+      "quantity": "Anzahl der Personen",
+      "time": "Wähle eine Uhrzeit",
+      "morning": "Von 10:00 bis 14:00",
+      "afternoon": "Von 13:00 bis 19:00",
+      "terms": "Ich akzeptiere die AGB",
+      "submit": "Absenden"
+    },
+    "footer": {
+      "contactUs": "Kontaktiere uns",
+      "location": "Standort:",
+      "pickupSpot": "(Abholort wird nach der Buchung vereinbart)",
+      "availability": "Verfügbarkeit:",
+      "everyDay": "Täglich – 2 Zeitfenster:",
+      "turns": "10:00–14:00 / 13:00–19:00",
+      "email": "E-Mail:",
+      "social": {
+        "instagram": "fer_sobame_la_rata",
+        "facebook": "fer_sobame_la_rata"
+      }
+    }
+  }
+  

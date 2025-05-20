@@ -46,6 +46,8 @@ const Header = () => {
   const languages = [
     { label: "ES", value: "es" },
     { label: "EN", value: "en" },
+    { label: "DEU", value: "deu" },
+    { label: "PT", value: "pt" },
   ];
 
   const titles = [

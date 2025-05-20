@@ -1,7 +1,7 @@
 import StepCard from "@Components/HowItWorks/StepCard/StepCard";
 import { Box, Typography, CardMedia } from "@mui/material";
 import arrowImage2 from "@assets/flecha-01.png";
-import * as styles from "./howItWorksStyles"; // Estilos actualizados
+import * as styles from "./howItWorksStyles"; 
 import { useTranslation } from "react-i18next"; // Importa useTranslation para manejar los idiomas
 import Loader from "@Components/Loader/Loader";
 import { useSelector } from "react-redux";

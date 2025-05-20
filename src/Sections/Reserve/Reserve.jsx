@@ -1,3 +1,4 @@
+import {useState} from "react";
 import cardImage from "@assets/hero-image.png";
 import {
   TextField,
@@ -16,14 +17,29 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { useTranslation } from "react-i18next";
 import * as styles from "./reserveStyle";
-import { useSelector, useDispatch } from "react-redux";
-import { createReserve, updateBooking } from "../../redux/actions/reserveActions";
+import {  useDispatch } from "react-redux";
+import { createReserve} from "../../redux/actions/reserveActions";
 import { parseISO } from "date-fns";
-
+import { useMediaQuery } from "@mui/material";
 const Reserve = ({ id }) => {
+
+  const isMobile = useMediaQuery(theme => theme.breakpoints.down("sm"));
+  
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const formData = useSelector((state) => state.booking.bookingForm);
+  const [formData, setFormData] = useState({
+    name: "",
+    contact: "",
+    date_selected: null,
+    time_selected: "1",
+    coment: "",
+    quantity: "",
+    terms: false
+  });
+
+
+
+
 
   // Convierte el string ISO de Redux a objeto Date o null para DatePicker
   const dateValue = formData.date_selected ? parseISO(formData.date_selected) : null;
@@ -38,23 +54,19 @@ const Reserve = ({ id }) => {
       newValue = value;
     }
 
-    dispatch(
-      updateBooking({
-        ...formData,
-        [name]: newValue,
-      })
-    );
+   setFormData({
+    ...formData,
+    [name]: newValue,
+   });
   };
 
   // Maneja el cambio de fecha, guardando en Redux la fecha formateada como string ISO (YYYY-MM-DD)
   const handleDateChange = (newDate) => {
     const formattedDate = newDate ? newDate.toISOString().split("T")[0] : "";
-    dispatch(
-      updateBooking({
-        ...formData,
-        date_selected: formattedDate,
-      })
-    );
+    setFormData({
+      ...formData,
+      date_selected: formattedDate,
+    })
   };
 
   const handleSubmit = async (e) => {
@@ -65,7 +77,16 @@ const Reserve = ({ id }) => {
   };
 
   return (
-    <Box id={id} sx={styles.reserveContainer}>
+  
+  <Box id={id} sx={styles.reserveContainer}>
+      {isMobile ?         <Card sx={styles.cardStyle}>
+          <CardMedia
+            component="img"
+            image={cardImage}
+            alt="Imagen de experiencia"
+            sx={styles.cardImageStyle}
+          />
+        </Card>: null}
       <Box sx={styles.formBox}>
         <Typography sx={styles.titleBox}>{t("reserve.title")}</Typography>
         <Typography
@@ -103,7 +124,7 @@ const Reserve = ({ id }) => {
               <Box>
                 <Typography sx={styles.label}>{t("reserve.date")}</Typography>
                 <DatePicker
-                  value={dateValue}
+                  value={dateValue  }
                   onChange={handleDateChange}
                   slotProps={{
                     textField: {
@@ -163,14 +184,14 @@ const Reserve = ({ id }) => {
       </Box>
 
       <Box sx={styles.rightBox}>
-        <Card sx={styles.cardStyle}>
+        {isMobile ? null : <Card sx={styles.cardStyle}>
           <CardMedia
             component="img"
             image={cardImage}
             alt="Imagen de experiencia"
             sx={styles.cardImageStyle}
           />
-        </Card>
+        </Card>}
 
         <Box sx={styles.sendButtonBox}>
           <FormControlLabel
