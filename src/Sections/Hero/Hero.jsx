@@ -5,7 +5,7 @@ import { HashLink } from "react-router-hash-link";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
-import Loader from "@Components/Loader/Loader";
+import Loader from "@Components/Loader";
 
 const Hero = ({ id }) => {
   const { t } = useTranslation();

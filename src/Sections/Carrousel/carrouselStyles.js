@@ -11,7 +11,7 @@ export const carrouselContainer = {
   flexDirection: { xs: "column", md: "row", lg: "row" },
   margin: "0 auto",
   marginBottom: { xs: 5, md: 5 },
-  padding: { xs: 2, md: 2 },
+  padding: {  md: 2 },
   flexWrap: "wrap",
 };
 
@@ -28,7 +28,7 @@ export const imageContainer = {
   borderRadius: 2,
   marginRight: { xs: 0, md: 5, lg: 35 },
   maxWidth: {
-    xs: "90%",
+    xs: "100%",
     sm: "80%",
     md: "600px",
   },
