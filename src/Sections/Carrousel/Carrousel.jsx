@@ -68,16 +68,16 @@ const Carrousel = ({ id }) => {
             {t("carrousel.title")}
           </Typography>
           <Box component="ul" sx={{ paddingLeft: 2, margin: 0 }}>
-            {t("carrousel.features", { returnObjects: true }).map((feature, index) => (
-              <Box
-                component="li"
-                key={index}
-                sx={styles.listItemStyle}
-              >
-                {feature}
-              </Box>
-            ))}
-          </Box>
+          {t("carrousel.features", { returnObjects: true }).map((feature, index) => (
+            <Box
+              component="li"
+              key={index}
+              sx={styles.listItemStyle}
+            >
+              {feature}
+            </Box>
+          ))}
+        </Box>
           <Typography component="p" sx={styles.doubtsStyle}>
             {t("carrousel.contactUs")}
           </Typography>

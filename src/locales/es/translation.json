@@ -55,7 +55,8 @@
     "morning": "De 10:00 a 14:00",
     "afternoon": "De 13:00 a 19:00",
     "terms": "Acepto términos y condiciones",
-    "submit": "Enviar"
+    "submit": "Enviar",
+    "selectDate": "Seleccione primero una fecha de reserva"
   },
   "footer": {
     "contactUs": "Contactanos",

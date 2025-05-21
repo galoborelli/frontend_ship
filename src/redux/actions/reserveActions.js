@@ -1,5 +1,5 @@
 import axios from "axios";
-import {POST_BOOKING_SUCCESS, POST_BOOKING_ERROR, UPDATE_BOOKING} from "../actions";
+import {POST_BOOKING_SUCCESS, POST_BOOKING_ERROR, UPDATE_BOOKING, GET_BOOKING_SUCCESS, GET_BOOKING_ERROR} from "../actions";
 
 export const updateBooking = (formData) => {
     return {
@@ -8,6 +8,7 @@ export const updateBooking = (formData) => {
     };
   };
   
+
   export const createReserve = (reserve) => {
     return async (dispatch) => {
       try {
@@ -23,3 +24,18 @@ export const updateBooking = (formData) => {
     };
   };
   
+
+  export const getReserves = (date) => {
+    return async (dispatch) => {
+      try {
+        const url = import.meta.env.VITE_API_URL.replace(/\/$/, "");
+        const response = await axios.get(`${url}/api/reserves/${date}`);
+        console.log(response.data);
+        return response.data;
+      } catch (error) {
+        const errorMessage =
+          error.response?.data || error.message || "Error al obtener las reservas";
+        dispatch({ type: GET_BOOKING_ERROR, payload: errorMessage });
+      }
+    };
+  };
