@@ -9,7 +9,7 @@ const getImages = () => {
   return async (dispatch) => {
 
     try {
-      const url = import.meta.env.VITE_API_URL.replace(/\/$/, '');
+      const url = import.meta.env.VITE_PROD_API_URL.replace(/\/$/, '');
       console.log("URL que se usa:", import.meta.env.VITE_PROD_API_URL);
       const response = await axios.get(`${url}/api/images`);
       dispatch({ type: GET_IMAGES_SUCCESS, payload: response.data });
