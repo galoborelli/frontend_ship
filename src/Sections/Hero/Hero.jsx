@@ -3,8 +3,9 @@ import { Box, Button, CardMedia, Typography } from "@mui/material";
 import * as styles from "./heroStyles";
 import { HashLink } from "react-router-hash-link";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getImages } from "@redux/actions/images";
 import Loader from "@Components/Loader";
 
 const Hero = ({ id }) => {
@@ -12,8 +13,15 @@ const Hero = ({ id }) => {
 
   const isLoading = useSelector(state => state.loader.isLoadingById['images']);
   const { images } = useSelector(state => state.images);
+  const dispatch = useDispatch();
   const imageHero = images?.filter((img) => img.title === "hero-image");
 
+
+useEffect(() => {
+  dispatch(getImages());
+  console.log("IMÁGENES:", images);
+}, [dispatch]);
+  
   return (
     isLoading ? ( <Loader/> )
     : (
