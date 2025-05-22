@@ -7,13 +7,16 @@ import Footer from "@Sections/Footer/Footer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import  getImages  from "@Redux/actions/bannersImages";
+import { useSelector } from "react-redux";
+
 
 const Home = () => {
   const dispatch = useDispatch();
- 
+  const { images } = useSelector(state => state.images); 
   useEffect(() => {
     console.log('Llamando a getImages');
     dispatch(getImages());
+    console.log("IMÁGENES:", images);
   }, [dispatch])
 
   return (

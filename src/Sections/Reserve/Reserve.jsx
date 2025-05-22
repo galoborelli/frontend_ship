@@ -19,7 +19,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { useTranslation } from "react-i18next";
 import * as styles from "./reserveStyle";
 import { useDispatch } from "react-redux";
-import { createReserve } from "../../redux/actions/reserveActions";
+import { createReserve } from "@Redux/actions/reserveActions";
 import { parseISO } from "date-fns";
 import axios from "axios";
 

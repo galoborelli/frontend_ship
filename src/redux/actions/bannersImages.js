@@ -10,6 +10,7 @@ const getImages = () => {
 
     try {
       const url = import.meta.env.PROD_API_URL.replace(/\/$/, '');
+      console.log("URL que se usa:", import.meta.env.PROD_API_URL);
       const response = await axios.get(`${url}/api/images`);
       dispatch({ type: GET_IMAGES_SUCCESS, payload: response.data });
     } catch (error) {
