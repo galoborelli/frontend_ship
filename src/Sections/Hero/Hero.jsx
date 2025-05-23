@@ -12,7 +12,7 @@ const Hero = ({ id }) => {
   const isLoading = useSelector(state => state.loader.isLoadingById['images']);
   const { images } = useSelector(state => state.images);
 
-  const imageHero = images?.filter((img) => img.title === "hero-image");
+  const imageHero = images?.filter((img) => img.title === "hero-img");
 
   return (
     isLoading ? ( <Loader/> )
