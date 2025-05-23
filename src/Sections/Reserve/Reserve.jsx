@@ -120,7 +120,7 @@ const Reserve = ({ id }) => {
                                 <TextField
                                     sx={styles.textFieldStyle}
                                     name="contact"
-                                    placeholder="e.g. +54 9 221 4567890"
+                                    placeholder="e.g. +34 123 23 23 23"
                                     value={formData.contact || ""}
                                     onChange={handleChangeForm}
                                     required
