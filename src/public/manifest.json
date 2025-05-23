@@ -1,0 +1,21 @@
+{
+  "name": "Ship Relax App",
+  "short_name": "ShipRelax",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0d47a1",
+  "description": "Reservá tu momento de relajación en el barco",
+  "icons": [
+    {
+      "src": "src/public/icons8-boat-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "src/public/icons8-boat-144.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
