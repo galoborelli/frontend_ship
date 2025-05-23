@@ -12,17 +12,17 @@ const Hero = ({ id }) => {
   const isLoading = useSelector(state => state.loader.isLoadingById['images']);
   const { images } = useSelector(state => state.images);
 
-  const imageHero = images?.filter((img) => img.title === "hero-img");
+  const imageHero = images?.find((img) => img.title === "hero-img");
 
   return (
     isLoading ? ( <Loader/> )
     : (
       <Box id={id} sx={styles.heroContainer}>
 
-      {imageHero?.length > 0 ? (
-        <CardMedia component="img" image={imageHero[0].image_url} sx={styles.heroImage} />
+      {imageHero ? (
+        <CardMedia component="img" image={imageHero.image_url} sx={styles.heroImage} />
       ) : (
-        <div>No hay imágenes disponibles</div> // o dejalo vacío si preferís
+        <div>No hay imágenes disponibles</div>
       )}
 
       <Box sx={styles.contentBox}>

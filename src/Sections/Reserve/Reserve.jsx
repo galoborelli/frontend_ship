@@ -54,6 +54,7 @@ const Reserve = ({ id }) => {
         setAvailabilityError(null);
         try {
             const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/reserves/${formattedDate}/`);
+            console.log("Disponibilidad:", response.data);
             setDateAvailability(response.data);
         } catch (error) {
             console.error("Error fetching availability:", error);
@@ -65,15 +66,18 @@ const Reserve = ({ id }) => {
     };
 
     const handleDateChange = (newDate) => {
-        const formattedDate = newDate ? newDate.toISOString().split("T")[0] : "";
+        const formattedDate = newDate
+          ? newDate.toLocaleDateString("en-CA") // yyyy-mm-dd
+          : "";
         setFormData({ ...formData, date_selected: formattedDate });
+      
         if (formattedDate) {
-            fetchAvailability(formattedDate);
+          fetchAvailability(formattedDate);
         } else {
-            setDateAvailability([]);
+          setDateAvailability([]);
         }
-    };
-
+      };
+      
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!formData.terms) return alert(t("reserve.terms"));
@@ -195,14 +199,14 @@ const Reserve = ({ id }) => {
                                     )}
                                     {!loadingAvailability && !availabilityError && dateAvailability.length > 0 &&
                                         dateAvailability.map((schedule) => (
+                                         
                                             <MenuItem key={schedule.id} value={schedule.id}>
-                                                {schedule.type === "morning" ? t("reserve.morning") : t("reserve.afternoon")}
+                                                {schedule.type === "mañana" ? t("reserve.morning") : t("reserve.afternoon")}
                                             </MenuItem>
                                         ))}
                                     {!loadingAvailability && !availabilityError && dateAvailability.length === 0 && formData.date_selected && (
                                         <MenuItem disabled value="">
-                                            {t("reserve.noAvailability")}
-                                        </MenuItem>
+                                            {t("reserve.noAvailability")}                                        </MenuItem>
                                     )}
                                     {!formData.date_selected && (
                                         <MenuItem disabled value="">

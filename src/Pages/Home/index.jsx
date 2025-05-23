@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     console.log('Llamando a getImages');
     dispatch(getImages());
-    console.log("IMÁGENES:", images);
+    if(images) console.log("IMÁGENES:", images);
   }, [dispatch])
 
   return (
