@@ -66,7 +66,7 @@ export const cardStyle = {
   boxShadow: "none",
   transform: {
     lg: "rotate(10deg) translateY(-40%)",
-    xs: "rotate(3deg) translateY(0%)",
+    xs: " translateY(0%)",
   },
   marginBottom: "2rem",
 };
@@ -86,10 +86,11 @@ export const cardImageStyle = {
 
 export const sendButtonBox = {
   fontSize: "12px",
-  marginTop: "1rem",
+  marginTop: {lg:"-6rem"},
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
+  
 };
 
 export const sendButton = {

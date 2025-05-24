@@ -122,6 +122,7 @@ const Header = () => {
                             key={value}
                             onClick={() => handleLanguageChange(value)}
                             style={{
+                              marginTop:"2.5rem",
                               fontWeight:
                                 currentLanguage === value ? "bold" : "normal",
                             }}
