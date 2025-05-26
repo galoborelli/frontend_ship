@@ -43,6 +43,7 @@ const Reserve = ({ id }) => {
         time_selected: "1",
         coment: "",
         quantity: "",
+        status: "",
         terms: false,
     });
     const [dateAvailability, setDateAvailability] = useState([]);
