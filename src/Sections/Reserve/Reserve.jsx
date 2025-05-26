@@ -36,6 +36,7 @@ const Reserve = ({ id }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
 
+    // ESTADOS
     const [formData, setFormData] = useState({
         id_reserve: "",
         name: "",
@@ -49,45 +50,28 @@ const Reserve = ({ id }) => {
         terms: false,
     });
     const [dateAvailability, setDateAvailability] = useState([]);
-    const [loadingAvailability, setLoadingAvailability] = useState(false);
-    const [availabilityError, setAvailabilityError] = useState(null);
-
     const dateValue = formData.date_selected ? parseISO(formData.date_selected) : null;
 
-
+    // FUNCIONES
     const fetchAvailability = async (formattedDate) => {
-        setLoadingAvailability(true);
-        setAvailabilityError(null);
+
+ 
         try {
             const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/reserves/${formattedDate}/`);
             console.log("Disponibilidad:", response.data);
             setDateAvailability(response.data);
         } catch (error) {
             console.error("Error fetching availability:", error);
-            setAvailabilityError(error.message || "Error al obtener la disponibilidad.");
+            alert(error.message || "Error al obtener la disponibilidad.");
             setDateAvailability([]);
-        } finally {
-            setLoadingAvailability(false);
         }
     };
-
-
-
-useEffect(() => {
-    if(formData.date_selected) {
-        fetchAvailability(formData.date_selected);
-    }
-}, [formData.date_selected]);
-
 
     const handleChangeForm = (e) => {
         const { name, value, checked, type } = e.target;
         const newValue = type === "checkbox" ? checked : value;
         setFormData({ ...formData, [name]: newValue });
     };
-
-
-
 
     const handleDateChange = (newDate) => {
         const formattedDate = newDate
@@ -103,6 +87,15 @@ useEffect(() => {
         const checkoutUrl = await dispatch(createReserve(formData));
         if(checkoutUrl){window.location.href = checkoutUrl;}
     };
+
+    
+    // useEffect para obtener la disponibilidad de horarios en el dia seleccionado
+    useEffect(() => {
+    if(formData.date_selected) {
+    fetchAvailability(formData.date_selected);
+    }
+    }, [formData.date_selected]);
+
 
     return (
         <Box id={id} sx={styles.reserveContainer}>
@@ -259,26 +252,16 @@ useEffect(() => {
                                     onChange={handleChangeForm}
                                     sx={styles.textFieldStyle}
                                     required
-                                    disabled={loadingAvailability || availabilityError || (dateAvailability.length === 0 && formData.date_selected)}
+                                    disabled={dateAvailability.length === 0 && formData.date_selected}
                                 >
-                                    {loadingAvailability && (
-                                        <MenuItem disabled value="">
-                                            {t("reserve.loadingAvailability")}
-                                        </MenuItem>
-                                    )}
-                                    {availabilityError && (
-                                        <MenuItem disabled value="">
-                                            {t("reserve.availabilityError")}
-                                        </MenuItem>
-                                    )}
-                                   {!loadingAvailability && !availabilityError && dateAvailability.length > 0 &&
+                                   {dateAvailability.length > 0 &&
                                     dateAvailability.map((schedule) => (
                                     <MenuItem key={schedule.id} value={schedule.id}>
                                     {`${formatHour(schedule.init_hour)} a ${formatHour(schedule.end_hour)}`}
                                     </MenuItem>
                                     ))
                                     }
-                                    {!loadingAvailability && !availabilityError && dateAvailability.length === 0 && formData.date_selected && (
+                                    {dateAvailability.length === 0 && formData.date_selected && (
                                         <MenuItem disabled value="">
                                             {t("reserve.noAvailability")}                                        </MenuItem>
                                     )}

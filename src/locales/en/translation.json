@@ -49,7 +49,7 @@
     "name": "Full Name",
     "contact": "Email or WhatsApp",
     "date": "Reservation Date",
-    "comments": "Comments",
+    "message": "Comments",
     "quantity": "Number of people",
     "time": "Select a time",
     "morning": "From 10:00 to 14:00",
