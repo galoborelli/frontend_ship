@@ -37,13 +37,15 @@ const Reserve = ({ id }) => {
     const dispatch = useDispatch();
 
     const [formData, setFormData] = useState({
+        id_reserve: "",
         name: "",
         contact: "",
         date_selected: null,
         time_selected: "1",
-        coment: "",
+        message: "",
         quantity: "",
         status: "",
+        amount: 100,
         terms: false,
     });
     const [dateAvailability, setDateAvailability] = useState([]);
@@ -98,7 +100,8 @@ useEffect(() => {
         e.preventDefault();
         if (!formData.terms) return alert(t("reserve.terms"));
         console.log(formData);
-        dispatch(createReserve(formData));
+        const checkoutUrl = await dispatch(createReserve(formData));
+        if(checkoutUrl){window.location.href = checkoutUrl;}
     };
 
     return (
@@ -163,14 +166,14 @@ useEffect(() => {
                                     gridColumn: { lg: "2" },
                                 }}
                             >
-                                <Typography sx={styles.label}>{t("reserve.comments")}</Typography>
+                                <Typography sx={styles.label}>{t("reserve.message")}</Typography>
                                 <TextField
                                     sx={styles.textFieldStyle}
-                                    name="coment"
+                                    name="message"
                                     multiline
                                     minRows={4}
                                     placeholder="e.g. Alguna petición especial..."
-                                    value={formData.coment || ""}
+                                    value={formData.message || ""}
                                     onChange={handleChangeForm}
                                 />
                             </Box>

@@ -13,13 +13,14 @@ export const updateBooking = (formData) => {
     return async (dispatch) => {
       try {
         const url = import.meta.env.VITE_API_URL.replace(/\/$/, "");
-        const response = await axios.post(`${url}/api/reserves/`, reserve);
-        console.log(response.data);
+        const response = await axios.post(`${url}/api/checkout/`, reserve);
         dispatch({ type: POST_BOOKING_SUCCESS, payload: response.data });
+        return response.data.checkout_url;  // Retorna la URL para usarla después
       } catch (error) {
         const errorMessage =
           error.response?.data || error.message || "Error al crear la reserva";
         dispatch({ type: POST_BOOKING_ERROR, payload: errorMessage });
+        throw error; // Lanza error para manejarlo en el componente
       }
     };
   };
