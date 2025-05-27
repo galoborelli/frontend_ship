@@ -3,6 +3,7 @@ import {UPDATE_BOOKING, POST_BOOKING_ERROR, POST_BOOKING_SUCCESS, GET_BOOKING_ER
 
 const initialState = {
     bookings: [],
+    bookingForm: {},
     error: null,
 };
 

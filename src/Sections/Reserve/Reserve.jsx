@@ -21,13 +21,12 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { useTranslation } from "react-i18next";
 import * as styles from "./reserveStyle";
 import { useDispatch } from "react-redux";
-import { createReserve } from "@Redux/actions/reserveActions";
+import { createReserve, updateBooking } from "@Redux/actions/reserveActions";
 import { parseISO } from "date-fns";
 import axios from "axios";
 
 
 function formatHour(hourString) {
-    // hourString: "8:00:00"
     return hourString.slice(0, -3); // elimina los últimos 3 caracteres ":00"
   }
 
@@ -71,6 +70,7 @@ const Reserve = ({ id }) => {
         const { name, value, checked, type } = e.target;
         const newValue = type === "checkbox" ? checked : value;
         setFormData({ ...formData, [name]: newValue });
+ 
     };
 
     const handleDateChange = (newDate) => {
@@ -81,6 +81,8 @@ const Reserve = ({ id }) => {
       };
       
     const handleSubmit = async (e) => {
+
+        dispatch(updateBooking(formData));
         e.preventDefault();
         if (!formData.terms) return alert(t("reserve.terms"));
         console.log(formData);
@@ -88,7 +90,7 @@ const Reserve = ({ id }) => {
         if(checkoutUrl){window.location.href = checkoutUrl;}
     };
 
-    
+
     // useEffect para obtener la disponibilidad de horarios en el dia seleccionado
     useEffect(() => {
     if(formData.date_selected) {

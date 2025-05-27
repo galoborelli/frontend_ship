@@ -10,6 +10,7 @@ const rootReducer = combineReducers({
   language: languageReducer,
   images: bannerReducer,
   booking: bookingReducer,
+  
 });
 
 export default rootReducer;
