@@ -21,7 +21,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { useTranslation } from "react-i18next";
 import * as styles from "./reserveStyle";
 import { useDispatch } from "react-redux";
-import { createReserve, updateBooking } from "@Redux/actions/reserveActions";
+import { createReserve } from "@Redux/actions/reserveActions";
 import { parseISO } from "date-fns";
 import axios from "axios";
 
@@ -70,7 +70,7 @@ const Reserve = ({ id }) => {
         const { name, value, checked, type } = e.target;
         const newValue = type === "checkbox" ? checked : value;
         setFormData({ ...formData, [name]: newValue });
- 
+        console.log(formData);
     };
 
     const handleDateChange = (newDate) => {
@@ -80,15 +80,19 @@ const Reserve = ({ id }) => {
         setFormData({ ...formData, date_selected: formattedDate });
       };
       
-    const handleSubmit = async (e) => {
-
-        dispatch(updateBooking(formData));
+      const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!formData.terms) return alert(t("reserve.terms"));
-        console.log(formData);
+      
+        if (!formData.terms) {
+          return alert(t("reserve.terms"));
+        }
+      
         const checkoutUrl = await dispatch(createReserve(formData));
-        if(checkoutUrl){window.location.href = checkoutUrl;}
-    };
+        if (checkoutUrl) {
+          window.location.href = checkoutUrl;
+        }
+      };
+      
 
 
     // useEffect para obtener la disponibilidad de horarios en el dia seleccionado
@@ -115,7 +119,7 @@ const Reserve = ({ id }) => {
                 />
 
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <form onSubmit={handleSubmit}>
+                    <form >
                         <Box sx={styles.formGrid}>
                             <Box>
                                 <Typography sx={styles.label}>{t("reserve.name")}</Typography>
@@ -308,7 +312,7 @@ const Reserve = ({ id }) => {
                     <Button
                         sx={styles.sendButton}
                         endIcon={<span>➔</span>}
-                        onClick={handleSubmit}
+                       onClick={handleSubmit}
                     >
                         {t("reserve.submit")}
                     </Button>

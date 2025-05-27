@@ -1,9 +1,11 @@
 
 import {UPDATE_BOOKING, POST_BOOKING_ERROR, POST_BOOKING_SUCCESS, GET_BOOKING_ERROR, GET_BOOKING_SUCCESS } from "../actions";
 
+
+
 const initialState = {
     bookings: [],
-    bookingForm: {},
+    bookingForm: {id_reserve: "", name: "", contact: "", date_selected: null, time_selected: "1", message: "", quantity: "", status: "", amount: 100, terms: false},
     error: null,
 };
 
