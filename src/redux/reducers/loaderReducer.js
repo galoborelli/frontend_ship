@@ -1,28 +1,20 @@
 import { LOADER_ACTIVE, LOADER_STOP } from '../actions/index';
 
 const initialState = {
-  isLoadingById: {}, // { [id]: true | false }
+  isLoadingById: {
+    id:false,
+  },          //  id: true | false 
 };
 
 export default function loaderReducer(state = initialState, action) {
   switch (action.type) {
     case LOADER_ACTIVE:
-      if (!action.payload) return state;
+      if (!action.payload || !action.payload.id) return state;
       return {
         ...state,
         isLoadingById: {
           ...state.isLoadingById,
-          [action.payload]: true,
-        },
-      };
-
-    case LOADER_STOP:
-      if (!action.payload) return state;
-      return {
-        ...state,
-        isLoadingById: {
-          ...state.isLoadingById,
-          [action.payload]: false,
+          [action.payload.id]: action.payload.value,
         },
       };
 

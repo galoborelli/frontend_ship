@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+
 import cardImage from "@assets/hero-image.png";
+
 import {
     TextField,
     FormControlLabel,
@@ -15,25 +17,35 @@ import {
     useMediaQuery,
 } from "@mui/material";
 
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import CreditCardIcon from "@mui/icons-material/CreditCard";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers";
+
 import { useTranslation } from "react-i18next";
+
 import * as styles from "./reserveStyle";
-import { useDispatch } from "react-redux";
-import { createReserve } from "@Redux/actions/reserveActions";
+
+import { useDispatch, useSelector } from "react-redux";
+import { createReserveCard, createReserveCash } from "@Redux/actions/reserveActions";
+import { loaderActive } from "@Redux/actions/loaderActions";
 import { parseISO } from "date-fns";
+
 import axios from "axios";
 
+import Loader from "@Components/Loader";
 
 function formatHour(hourString) {
     return hourString.slice(0, -3); // elimina los últimos 3 caracteres ":00"
   }
 
-const Reserve = ({ id }) => {
+const Reserve = () => {
     const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
     const { t } = useTranslation();
     const dispatch = useDispatch();
+    const isLoading = useSelector((state) => state.loader.isLoadingById["id"]);
+    
 
     // ESTADOS
     const [formData, setFormData] = useState({
@@ -46,15 +58,15 @@ const Reserve = ({ id }) => {
         quantity: "",
         status: "",
         amount: 100,
+        method_payment: "",
         terms: false,
     });
     const [dateAvailability, setDateAvailability] = useState([]);
     const dateValue = formData.date_selected ? parseISO(formData.date_selected) : null;
+    const [selected, setSelected] = useState("cash");
 
     // FUNCIONES
     const fetchAvailability = async (formattedDate) => {
-
- 
         try {
             const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/reserves/${formattedDate}/`);
             console.log("Disponibilidad:", response.data);
@@ -86,25 +98,49 @@ const Reserve = ({ id }) => {
         if (!formData.terms) {
           return alert(t("reserve.terms"));
         }
-      
-        const checkoutUrl = await dispatch(createReserve(formData));
-        if (checkoutUrl) {
-          window.location.href = checkoutUrl;
-        }
+        
+        if (formData.method_payment === "cash") {
+            const response = await dispatch(createReserveCash(formData));
+            console.log(response);
+            
+        } else if (formData.method_payment === "card") {    
+            const checkoutUrl = await dispatch(createReserveCard(formData));
+            if (checkoutUrl) {
+              window.location.href = checkoutUrl;
+            }
+          }
       };
       
 
 
     // useEffect para obtener la disponibilidad de horarios en el dia seleccionado
     useEffect(() => {
-    if(formData.date_selected) {
-    fetchAvailability(formData.date_selected);
-    }
-    }, [formData.date_selected]);
-
+        const loadAvailability = async () => {
+          dispatch(loaderActive({ id: "id", value: true }));
+          try {
+            if (formData.date_selected) {
+              await fetchAvailability(formData.date_selected);
+            }
+          } catch (error) {
+            console.error("Error fetching availability:", error);
+          } finally {
+            dispatch(loaderActive({ id: "id", value: false }));
+          }
+        };
+      
+        loadAvailability();
+      }, [formData.date_selected, dispatch]);
+      
+    
 
     return (
-        <Box id={id} sx={styles.reserveContainer}>
+        <>
+        {isLoading && <Loader id="id" />}
+
+        {!isLoading && (
+        
+        
+            <Box id="id" sx={styles.reserveContainer}>
             {isMobile ? (
                 <Card sx={styles.cardStyle}>
                     <CardMedia component="img" image={cardImage} alt="Imagen de experiencia" sx={styles.cardImageStyle} />
@@ -214,7 +250,7 @@ const Reserve = ({ id }) => {
                                             backgroundColor: "#f0f0f0",
                                         }}
                                     >
-                                        –
+                                        
                                     </IconButton>
 
                                     <Box
@@ -269,7 +305,8 @@ const Reserve = ({ id }) => {
                                     }
                                     {dateAvailability.length === 0 && formData.date_selected && (
                                         <MenuItem disabled value="">
-                                            {t("reserve.noAvailability")}                                        </MenuItem>
+                                            {t("reserve.noAvailability")}
+                                        </MenuItem>
                                     )}
                                     {!formData.date_selected && (
                                         <MenuItem disabled value="">
@@ -278,6 +315,36 @@ const Reserve = ({ id }) => {
                                     )}
                                 </Select>
                             </Box>
+                            <Box sx={styles.paymentMethodBox}>
+                            <Typography sx={styles.label}>Método de pago</Typography>
+                            
+                            <Box sx={{ display: "flex", gap: 2 }}>
+                            <Button
+                                fullWidth
+                                onClick={() => {
+                                    setSelected("card");
+                                    setFormData((prev) => ({ ...prev, method_payment: "card" }));
+                                }}
+                                startIcon={<CreditCardIcon />}
+                                sx={styles.paymentButton(selected === "card", false)}
+                                >
+                                <Typography variant="body1">Pagar con tarjeta</Typography>
+                                </Button>
+
+                                <Button
+                                fullWidth
+                                onClick={() => {
+                                    setSelected("cash");
+                                    setFormData((prev) => ({ ...prev, method_payment: "cash" }));
+                                }}
+                                startIcon={<AttachMoneyIcon />}
+                                sx={styles.paymentButton(selected === "cash", true)}
+                                >
+                                <Typography variant="body1">Pagar en efectivo</Typography>
+                                </Button>
+                            </Box>
+                            </Box>
+
                         </Box>
                     </form>
                 </LocalizationProvider>
@@ -319,7 +386,9 @@ const Reserve = ({ id }) => {
                 </Box>
             </Box>
         </Box>
-    );
+        )}
+     </>
+   );
 };
 
 export default Reserve;

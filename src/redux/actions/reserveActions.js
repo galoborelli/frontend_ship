@@ -9,7 +9,7 @@ export const updateBooking = (formData) => {
   };
   
 
-  export const createReserve = (reserve) => {
+  export const createReserveCard = (reserve) => {
     return async (dispatch) => {
       try {
         const url = import.meta.env.VITE_API_URL.replace(/\/$/, "");
@@ -25,6 +25,24 @@ export const updateBooking = (formData) => {
     };
   };
   
+
+export const createReserveCash = (reserve) => {
+    return async (dispatch) => {
+      try {
+        const url = import.meta.env.VITE_API_URL.replace(/\/$/, "");
+        const response = await axios.post(`${url}/api/checkout_cash/`, reserve);
+        dispatch({ type: POST_BOOKING_SUCCESS, payload: response.data });
+        return response.data;
+      } catch (error) {
+        const errorMessage =
+          error.response?.data || error.message || "Error al crear la reserva";
+        dispatch({ type: POST_BOOKING_ERROR, payload: errorMessage });
+        throw error; // Lanza error para manejarlo en el componente
+      }
+    };
+  };
+
+
 
   export const getReserves = (date) => {
     return async (dispatch) => {

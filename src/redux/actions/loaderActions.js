@@ -1,16 +1,15 @@
-import { LOADER_ACTIVE, LOADER_STOP, CLEAR_ERRORS } from "./index";
+import { LOADER_ACTIVE, LOADER_STOP } from "./index";
 
 
-export const loaderActive = (value) => {
+export const loaderActive = ({ id, value }) => {
   return (dispatch) => {
-    console.log(value);
-    dispatch({ type: LOADER_ACTIVE, payload: value });
+    console.log("Activando loader para:", id, value);
+    dispatch({ type: LOADER_ACTIVE, payload: { id, value } });
   };
 };
 
-export const loaderStop = (value) => {
+export const loaderStop = (id) => {
   return (dispatch) => {
-    dispatch({ type: LOADER_STOP, payload: value });
-  }
+    dispatch({ type: LOADER_STOP, payload: id });
+  };
 };
-

@@ -10,33 +10,47 @@ import MessageIcon from "@mui/icons-material/Message";
 import { motion } from "framer-motion";
 import * as styles from "./reserveStyles";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
+import Loader from "@Components/Loader";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { loaderActive } from "@Redux/actions/loaderActions";
 
 const ReserveSuccess = () => {
 
+  const dispatch = useDispatch();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const reserveId = queryParams.get('reserve_id');
   const [bookingData, setBookingData] = useState(null);
-
+  const isLoading = useSelector((state) => state.loader.isLoadingById["id"]);
 
   
   useEffect(() => {
+    const fetchData = async () => {
+    dispatch(loaderActive({ id:"id", value: true }));
+    try {
     if (reserveId) {
       // Llamar a tu API para obtener datos de la reserva con este id
-      fetch(`${import.meta.env.VITE_API_URL}/api/reserves/${reserveId}`)
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          setBookingData(data);
-        });
+      
+      const response = await axios.get([`${import.meta.env.VITE_API_URL}/api/reserves/${reserveId}`]);
+      
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      setBookingData(response.data);
     }
-  }, [reserveId]);
+    } catch (error) {
+      console.error("Error fetching reservation:", error);
+    } finally {
+      dispatch(loaderActive({ id:"id", value: false }));
+    }
+  };
+    fetchData();
+  }, [reserveId, dispatch]);
 
  
 
-  if (!bookingData) {
-    return <Typography>Cargando reserva...</Typography>;
-  }
+  if(isLoading || !bookingData) return <Loader id="id" />
 
   return (
     <Box sx={styles.container}>

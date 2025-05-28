@@ -84,6 +84,25 @@ export const cardImageStyle = {
 };
 
 
+
+export const paymentMethodBox = {
+  display: "flex",
+  flexDirection: "column",
+  
+};
+
+
+export const paymentButton = (isSelected, isDark) => ({
+  backgroundColor: isSelected ? (isDark ? "#3a1e00" : "#f5f5f5") : "#fff",
+  color: isSelected && isDark ? "white" : "black",
+  textTransform: "none",
+  borderRadius: "12px",
+  maxWidth: "250px",
+  py: 1.5,
+});
+
+
+
 export const sendButtonBox = {
   fontSize: "12px",
   marginTop: {lg:"-6rem"},
@@ -120,5 +139,6 @@ export const textFieldStyle = {
 
 export const label = {
   color: "black",
+  padding:"12px"
   
 }
