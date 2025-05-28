@@ -105,7 +105,7 @@ export const paymentButton = (isSelected, isDark) => ({
 
 export const sendButtonBox = {
   fontSize: "12px",
-  marginTop: {lg:"-6rem"},
+  
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",

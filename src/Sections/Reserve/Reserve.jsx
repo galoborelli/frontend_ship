@@ -28,11 +28,8 @@ import { useTranslation } from "react-i18next";
 import * as styles from "./reserveStyle";
 
 import { useDispatch, useSelector } from "react-redux";
-import { createReserveCard, createReserveCash } from "@Redux/actions/reserveActions";
-import { loaderActive } from "@Redux/actions/loaderActions";
+import { createReserveCard, createReserveCash, fetchAvailability } from "@Redux/actions/reserveActions";
 import { parseISO } from "date-fns";
-
-import axios from "axios";
 
 import Loader from "@Components/Loader";
 
@@ -44,7 +41,7 @@ const Reserve = () => {
     const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const isLoading = useSelector((state) => state.loader.isLoadingById["id"]);
+    const isLoading = useSelector((state) => state.loader.isLoadingById["screen"]);
     
 
     // ESTADOS
@@ -66,17 +63,6 @@ const Reserve = () => {
     const [selected, setSelected] = useState("cash");
 
     // FUNCIONES
-    const fetchAvailability = async (formattedDate) => {
-        try {
-            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/reserves/${formattedDate}/`);
-            console.log("Disponibilidad:", response.data);
-            setDateAvailability(response.data);
-        } catch (error) {
-            console.error("Error fetching availability:", error);
-            alert(error.message || "Error al obtener la disponibilidad.");
-            setDateAvailability([]);
-        }
-    };
 
     const handleChangeForm = (e) => {
         const { name, value, checked, type } = e.target;
@@ -100,7 +86,7 @@ const Reserve = () => {
         }
         
         if (formData.method_payment === "cash") {
-            const response = await dispatch(createReserveCash(formData));
+            const response = await dispatch(createReserveCash(formData,setDateAvailability));
             console.log(response);
             
         } else if (formData.method_payment === "card") {    
@@ -116,16 +102,15 @@ const Reserve = () => {
     // useEffect para obtener la disponibilidad de horarios en el dia seleccionado
     useEffect(() => {
         const loadAvailability = async () => {
-          dispatch(loaderActive({ id: "id", value: true }));
+            console.log("Cargando disponibilidad");
           try {
             if (formData.date_selected) {
-              await fetchAvailability(formData.date_selected);
+                console.log("formData.date_selected", formData.date_selected);
+                await dispatch(fetchAvailability(formData.date_selected, setDateAvailability));
             }
           } catch (error) {
             console.error("Error fetching availability:", error);
-          } finally {
-            dispatch(loaderActive({ id: "id", value: false }));
-          }
+          } 
         };
       
         loadAvailability();
@@ -135,7 +120,7 @@ const Reserve = () => {
 
     return (
         <>
-        {isLoading && <Loader id="id" />}
+        {isLoading && <Loader id="screen" />}
 
         {!isLoading && (
         
