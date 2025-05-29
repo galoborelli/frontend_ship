@@ -28,7 +28,7 @@ import { useTranslation } from "react-i18next";
 import * as styles from "./reserveStyle";
 
 import { useDispatch, useSelector } from "react-redux";
-import { createReserveCard, createReserveCash, fetchAvailability } from "@Redux/actions/reserveActions";
+import { fetchAvailability, submitReservation } from "@Redux/actions/reserveActions";
 import { parseISO } from "date-fns";
 
 import Loader from "@Components/Loader";
@@ -55,12 +55,12 @@ const Reserve = () => {
         quantity: "",
         status: "",
         amount: 100,
-        method_payment: "",
+    //    method_payment: "",
         terms: false,
     });
     const [dateAvailability, setDateAvailability] = useState([]);
     const dateValue = formData.date_selected ? parseISO(formData.date_selected) : null;
-    const [selected, setSelected] = useState("cash");
+ 
 
     // FUNCIONES
 
@@ -78,26 +78,10 @@ const Reserve = () => {
         setFormData({ ...formData, date_selected: formattedDate });
       };
       
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-      
-        if (!formData.terms) {
-          return alert(t("reserve.terms"));
-        }
-        
-        if (formData.method_payment === "cash") {
-            const response = await dispatch(createReserveCash(formData,setDateAvailability));
-            console.log(response);
-            
-        } else if (formData.method_payment === "card") {    
-            const checkoutUrl = await dispatch(createReserveCard(formData));
-            if (checkoutUrl) {
-              window.location.href = checkoutUrl;
-            }
-          }
-      };
-      
-
+ 
+    const handleSubmit = () => {
+        dispatch(submitReservation(formData, setDateAvailability, t));
+    }
 
     // useEffect para obtener la disponibilidad de horarios en el dia seleccionado
     useEffect(() => {
@@ -116,7 +100,7 @@ const Reserve = () => {
         loadAvailability();
       }, [formData.date_selected, dispatch]);
       
-    
+
 
     return (
         <>
@@ -300,35 +284,7 @@ const Reserve = () => {
                                     )}
                                 </Select>
                             </Box>
-                            <Box sx={styles.paymentMethodBox}>
-                            <Typography sx={styles.label}>Método de pago</Typography>
-                            
-                            <Box sx={{ display: "flex", gap: 2 }}>
-                            <Button
-                                fullWidth
-                                onClick={() => {
-                                    setSelected("card");
-                                    setFormData((prev) => ({ ...prev, method_payment: "card" }));
-                                }}
-                                startIcon={<CreditCardIcon />}
-                                sx={styles.paymentButton(selected === "card", false)}
-                                >
-                                <Typography variant="body1">Pagar con tarjeta</Typography>
-                                </Button>
 
-                                <Button
-                                fullWidth
-                                onClick={() => {
-                                    setSelected("cash");
-                                    setFormData((prev) => ({ ...prev, method_payment: "cash" }));
-                                }}
-                                startIcon={<AttachMoneyIcon />}
-                                sx={styles.paymentButton(selected === "cash", true)}
-                                >
-                                <Typography variant="body1">Pagar en efectivo</Typography>
-                                </Button>
-                            </Box>
-                            </Box>
 
                         </Box>
                     </form>
