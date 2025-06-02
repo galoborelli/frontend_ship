@@ -81,6 +81,10 @@ export const createReserveCash = (reserve,setDateAvailability) => {
     //  if (formData.method_payment === "cash") {
         const response = await dispatch(createReserveCash(formData, setDateAvailability));
         console.log(response);
+        dispatch({
+          type: "RESERVATION_SUCCESS",
+          payload: formData, // guarda la data para mostrar en el modal
+      });
     //   } else if (formData.method_payment === "card") {
     //     const checkoutUrl = await dispatch(createReserveCard(formData));
     //     if (checkoutUrl) {

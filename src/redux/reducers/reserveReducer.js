@@ -1,5 +1,5 @@
 
-import {UPDATE_BOOKING, POST_BOOKING_ERROR, POST_BOOKING_SUCCESS, GET_BOOKING_ERROR, GET_BOOKING_SUCCESS } from "../actions";
+import {UPDATE_BOOKING, POST_BOOKING_ERROR, POST_BOOKING_SUCCESS, GET_BOOKING_ERROR, GET_BOOKING_SUCCESS, RESERVATION_SUCCESS, RESET_RESERVATION_STATUS } from "../actions";
 
 
 
@@ -7,6 +7,8 @@ const initialState = {
     bookings: [],
     bookingForm: {id_reserve: "", name: "", contact: "", date_selected: null, time_selected: "1", message: "", quantity: "", status: "", amount: 100, terms: false},
     error: null,
+    reservationSuccess: false,
+    reservationData: null,
 };
 
 
@@ -37,6 +39,18 @@ export default function bookingReducer(state = initialState, action){
                 ...state,
                 bookings: action.payload
             }
+            case RESERVATION_SUCCESS:
+                return {
+                    ...state,
+                    reservationSuccess: true,
+                    reservationData: action.payload,
+                };
+            case RESET_RESERVATION_STATUS:
+                return {
+                    ...state,
+                    reservationSuccess: false,
+                    reservationData: null,
+                };
         default:
             return state;
     }

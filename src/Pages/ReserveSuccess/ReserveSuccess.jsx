@@ -107,7 +107,7 @@ const ReserveSuccess = () => {
         </Box>
 
         <Typography sx={styles.tip}>
-          * Recuerda llegar 10 minutos antes para una mejor atención.
+          * Recuerda llegar 10 minutos antes.
         </Typography>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
