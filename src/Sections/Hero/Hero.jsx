@@ -40,7 +40,7 @@ const Hero = ({ id }) => {
             sx={styles.primaryButton}
             component={HashLink}
             smooth
-            to="#reserve"
+            to="/#reserve"
           >
             {t("hero.primaryButton")}
           </Button>

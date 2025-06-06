@@ -10,7 +10,6 @@ import {
   ListItemButton,
   ListItemText,
   useMediaQuery,
-  Typography,
   Menu,
   MenuItem,
 } from "@mui/material";
@@ -25,6 +24,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { changeLanguage } from "@Redux/actions/lenguageActions";
 import i18n from "../../i18n";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { t } = useTranslation();
@@ -54,7 +54,7 @@ const Header = () => {
     { label: t("header.home"), id: "hero" },
     { label: t("header.gallery"), id: "carrousel" },
     { label: t("header.howItWorks"), id: "how-it-works" },
-    { label: t("header.contactUs"), id: "footer" },
+    { label: t("header.contactUs"), id: "ship" },
     { label: t("header.letsStart"), id: "reserve" },
   ];
 
@@ -138,17 +138,24 @@ const Header = () => {
             </>
           ) : (
             <Box sx={styles.navBox}>
-              {titles.map(({ label, id }) => (
-                <Button
-                  key={label}
-                  component={HashLink}
-                  smooth
-                  to={`/#${id}`}
-                  sx={styles.navButton}
-                >
-                  {label}
-                </Button>
-              ))}
+              {titles.map(({ label, id }) => {
+                const isExternalPage = id === "ship"; // O cualquier otro que deba tener <Route path="/algo" />
+                const Component = isExternalPage ? Link : HashLink;
+                const to = isExternalPage ? `/${id}` : `/#${id}`;
+
+                return (
+                      <Button
+                      key={label}
+                      component={Component}
+                      to={to}
+                      smooth={!isExternalPage}
+                      onClick={burguerMenu}
+                      sx={styles.navButton}
+                    >
+                      {label}
+                    </Button>
+                  );
+                })}
               <Box>
                 <Button
                   aria-controls="language-menu"

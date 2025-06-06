@@ -5,10 +5,10 @@ import {UPDATE_BOOKING, POST_BOOKING_ERROR, POST_BOOKING_SUCCESS, GET_BOOKING_ER
 
 const initialState = {
     bookings: [],
-    bookingForm: {id_reserve: "", name: "", contact: "", date_selected: null, time_selected: "1", message: "", quantity: "", status: "", amount: 100, terms: false},
+    bookingForm: {id_reserve: "", name: "", contact: "", date_selected: null, time_selected: "1", init_hour: "", end_hour: "", message: "", quantity: "", status: "", amount: 100, terms: false},
     error: null,
     reservationSuccess: false,
-    reservationData: null,
+    reservationData: {},
 };
 
 
@@ -49,7 +49,7 @@ export default function bookingReducer(state = initialState, action){
                 return {
                     ...state,
                     reservationSuccess: false,
-                    reservationData: null,
+                    bookingForm: initialState.bookingForm,
                 };
         default:
             return state;

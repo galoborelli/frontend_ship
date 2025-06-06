@@ -94,24 +94,47 @@ export const listItemStyle = {
   },
 };
 
+export const buttonContainer = {
+  display: "flex",
+  flexDirection: "column",
+  gap: 2,
+};
 
+export const buttonsRow = {
+  display: "flex",
+  marginTop:"1.5rem",
+  flexDirection: {lg:"row",xs:"column"},
+  gap: 2,
+};
 
 export const doubtsStyle = {
-  marginTop: {lg:"55px",},
+  marginTop: { lg: "55px" },
   marginBottom: "8px",
   color: "black",
   fontWeight: "bold",
   fontSize: "1.2rem",
-}
+};
 
 export const whatsappButton = {
   borderRadius: 5,
   backgroundColor: "black",
   color: "white",
   maxWidth: "300px",
-  pading: 2,
+  marginRight:{xs:0,lg:"2rem"},
   "&:hover": {
     backgroundColor: "green",
+    opacity: 0.8,
+  },
+};
+
+export const aboutButton = {
+  borderRadius: 5,
+  backgroundColor: "black",
+  color: "white",
+  maxWidth: "300px",
+  "&:hover": {
+    backgroundColor: "blue",
+    color:"white",
     opacity: 0.8,
   },
 };

@@ -2,6 +2,11 @@ import React from 'react';
 import { Modal, Box, Typography, Button } from '@mui/material';
 import * as styles from './successStyle';
 import { useSelector } from 'react-redux';
+
+
+
+
+
 export default function ReservaConfirmadaModal({ open, onClose }) {
     const reserve = useSelector((state) => state.booking.reservationData);
     
@@ -27,7 +32,7 @@ export default function ReservaConfirmadaModal({ open, onClose }) {
           <Typography id="modal-reserva-descripcion"  sx={styles.textStyle} >
             Nombre: {reserve.name} <br />
             Fecha: {reserve.date_selected} <br />
-            Hora: {reserve.time_selected} <br />
+            Hora: {reserve.init_hour + " - " + reserve.end_hour} <br />
             Monto: ${reserve.amount}
           </Typography>
           <Button onClick={onClose} sx={{ mt: 3 }} fullWidth variant="contained">

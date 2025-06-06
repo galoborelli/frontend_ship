@@ -61,14 +61,14 @@ export const primaryButton = {
   color: "white",
   whiteSpace: "nowrap", // ✅ evita que el texto se corte en dos líneas
   maxWidth: "100%", // ✅ evita que el botón desborde su contenedor
-  "&:hover": { opacity: 0.8 },
+  "&:hover": {color:"white", opacity: 0.8 }, 
 };
 
 export const secondaryButton = {
   border: "0.5px solid green",
   borderRadius: 5,
   backgroundColor: "transparent",
-  px: { xs: 3, sm: 6.5 },
+  px: {  sm: 6.5 },
   py: 1,
   color: "green",
   whiteSpace: "nowrap",

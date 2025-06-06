@@ -29,6 +29,7 @@ import {
     fetchAvailability,
     submitReservation,
 } from "@Redux/actions/reserveActions";
+
 import { UPDATE_BOOKING, RESET_RESERVATION_STATUS } from "@Redux/actions";
 import { parseISO } from "date-fns";
 
@@ -45,7 +46,6 @@ const Reserve = () => {
     const dispatch = useDispatch();
     const isLoading = useSelector((state) => state.loader.isLoadingById["screen"]);
     const formData = useSelector((state) => state.booking.bookingForm);
-    const [modalAbierto, setModalAbierto] = useState(false);
     const [dateAvailability, setDateAvailability] = useState([]);
     const dateValue = formData.date_selected ? parseISO(formData.date_selected) : null;
     const reservationSuccess = useSelector((state) => state.booking.reservationSuccess);
@@ -77,28 +77,8 @@ const Reserve = () => {
         });
     };
 
-    const resetForm = () => {
-        dispatch({
-            type: UPDATE_BOOKING,
-            payload: {
-                id_reserve: "",
-                name: "",
-                contact: "",
-                date_selected: null,
-                time_selected: "1",
-                message: "",
-                quantity: "",
-                status: "",
-                amount: 100,
-                terms: false,
-            },
-        });
-    };
-
     const handleSubmit = () => {
         dispatch(submitReservation(formData, setDateAvailability, t));
-        setModalAbierto(true);
-        resetForm();
     };
 
     useEffect(() => {
@@ -112,16 +92,9 @@ const Reserve = () => {
         loadAvailability();
     }, [formData.date_selected, dispatch]);
 
-    useEffect(() => {
-        if (reservationSuccess) {
-            setModalAbierto(true); // mostrar modal
-            resetForm(); // limpiar formulario
-        }
-    }, [reservationSuccess]);
-
+ 
     const handleCloseModal = () => {
-        setModalAbierto(false);
-        dispatch({ type: RESET_RESERVATION_STATUS }); // limpiar Redux
+        dispatch({ type: RESET_RESERVATION_STATUS, payload:null }); // limpiar Redux
     };
 
     return (
@@ -249,7 +222,7 @@ const Reserve = () => {
                                                     backgroundColor: "#f0f0f0",
                                                 }}
                                             >
-                                                −
+                                                -
                                             </IconButton>
 
                                             <Box
@@ -307,9 +280,7 @@ const Reserve = () => {
                                             {dateAvailability.length > 0 &&
                                                 dateAvailability.map((schedule) => (
                                                     <MenuItem key={schedule.id} value={schedule.id}>
-                                                        {`${formatHour(schedule.init_hour)} a ${formatHour(
-                                                            schedule.end_hour
-                                                        )}`}
+                                                        {formatHour(schedule.init_hour)} a {formatHour(schedule.end_hour)}
                                                     </MenuItem>
                                                 ))}
                                             {dateAvailability.length === 0 &&
@@ -328,8 +299,9 @@ const Reserve = () => {
                                 </Box>
 
                                 <ReserveSuccessModal
-                                    open={modalAbierto}
+                                    open={reservationSuccess}
                                     onClose={handleCloseModal}
+                                    
                              
                                 />
                             </form>

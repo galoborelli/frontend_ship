@@ -12,6 +12,12 @@ import App from './App.jsx';
 
 import { motion, useReducedMotion } from "framer-motion";
 
+
+
+
+
+
+
 // Usar una función para aplicar lógica con hooks (como useReducedMotion)
 function AnimatedWrapper({ children }) {
   const shouldReduceMotion = useReducedMotion();
@@ -27,6 +33,11 @@ function AnimatedWrapper({ children }) {
     </motion.div>
   );
 }
+
+
+
+
+
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
