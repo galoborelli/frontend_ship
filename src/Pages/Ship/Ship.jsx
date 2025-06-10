@@ -80,7 +80,7 @@ const Ship = () => {
   <Grow in={true} timeout={1600}>
     <Box sx={{ zIndex: 2 }}>
     <Button variant="contained" color="white" sx={styles.buttonStyle} onClick={() => {setShow(true); setModalType("routes")}}>
-      Rutas para navegar
+      Explora nuestros recorridos
     </Button>
     </Box>
   </Grow>

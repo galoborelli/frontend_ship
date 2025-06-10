@@ -3,6 +3,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import { motion } from "framer-motion";
 import ModalCarrousel from "../ModalCarrousel/ModalCarrousel";
 import ModalList from "@Components/ModalList/ModalList";
+import RoutesModal from "../RoutesModal/RoutesModal";
+
 
 const CustomModal = ({ open, onClose, modalType }) => {
   const theme = useTheme(); // Hook para acceder al tema
@@ -15,7 +17,7 @@ const CustomModal = ({ open, onClose, modalType }) => {
       case "features":
         return <ModalList />;
       case "routes":
-        return <ModalCarrousel />;
+        return <RoutesModal isOpen={open} />;
       default:
         return null;
     }
@@ -25,6 +27,7 @@ const CustomModal = ({ open, onClose, modalType }) => {
     <Modal
       open={open}
       onClose={onClose}
+      keepMounted
       sx={{
         backdropFilter: "blur(4px)",
         backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -50,8 +53,10 @@ const CustomModal = ({ open, onClose, modalType }) => {
 
             // Dimensiones para el contenido del modal
             width: isSmallScreen ? '95vw' : 'auto', // Ancho relativo al viewport en móvil, auto en desktop
+            minWidth: '400px',
             maxWidth: '900px', // Ancho máximo en desktop
             maxHeight: '90vh', // Altura máxima
+            minHeight: '800px',
             overflowY: 'auto', // Habilita scroll vertical si el contenido es muy largo
             display: 'flex', // Para centrar el contenido si es más pequeño que el box
             flexDirection: 'column',
