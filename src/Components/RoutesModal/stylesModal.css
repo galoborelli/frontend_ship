@@ -1,0 +1,33 @@
+/* Estilo del elemento principal del componente (opcional, para el borde externo, sombra, etc.) */
+gmp-place-autocomplete {
+  /* Asegúrate de que tenga un ancho y alto si no lo pones en el Box */
+  width: 250px; /* O el ancho que desees */
+  height: 30px; /* O el alto que desees */
+  border: 1px solid #ccc; /* Ejemplo de un borde para el componente */
+  border-radius: 4px; /* Bordes redondeados para el componente */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  /* Si quieres un fondo para el contenedor del input */
+  background-color: white; /* Ejemplo de fondo blanco para el contenedor externo */
+}
+
+/* ************************************************************ */
+/* ESTO ES LO CLAVE PARA QUITAR EL FONDO NEGRO DEL INPUT INTERNO */
+/* ************************************************************ */
+/* RoutesModal.css */
+
+gmp-place-autocomplete::part(input) {
+  background-color: transparent !important; /* Añadido !important */
+  color: #333 !important; /* Si también quieres cambiar el color del texto */
+  font-size: 16px !important;
+  padding: 0 8px !important;
+  border: none !important;
+  outline: none !important;
+}
+
+gmp-place-autocomplete::part(icon) {
+  color: #666 !important;
+}
+
+gmp-place-autocomplete::part(hint) {
+  color: #999 !important;
+}
